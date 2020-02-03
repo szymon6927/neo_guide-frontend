@@ -1,7 +1,7 @@
 <template>
   <el-header>
     <el-row>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="8">
         <el-input placeholder="Search" prefix-icon="el-icon-search"
           class="psalms-search"></el-input>
       </el-col>
