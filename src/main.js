@@ -8,7 +8,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
-// import './assets/css/reset.css';
+import './assets/css/global.css';
 
 Vue.config.productionTip = false;
 

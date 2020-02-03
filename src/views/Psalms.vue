@@ -3,9 +3,8 @@
     <NavBar />
     <el-container>
       <el-main>
-        <div class="wrapper">
-          <p>O nas</p>
-        </div>
+        <Search />
+        <Psalms />
         <Footer />
       </el-main>
     </el-container>
@@ -14,13 +13,17 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import Search from '@/components/Search.vue';
 import Footer from '@/components/Footer.vue';
+import Psalms from '@/components/Psalms.vue';
 
 export default {
   name: 'home',
   components: {
     NavBar,
+    Search,
     Footer,
+    Psalms,
   },
 };
 </script>

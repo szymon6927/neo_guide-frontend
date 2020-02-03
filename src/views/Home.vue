@@ -3,8 +3,7 @@
     <NavBar />
     <el-container>
       <el-main>
-        <Search />
-        <Psalms />
+        <p>Home Page</p>
         <Footer />
       </el-main>
     </el-container>
@@ -13,23 +12,17 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
-import Search from '@/components/Search.vue';
 import Footer from '@/components/Footer.vue';
-import Psalms from '@/components/Psalms.vue';
 
 export default {
   name: 'home',
   components: {
     NavBar,
-    Search,
     Footer,
-    Psalms,
   },
 };
 </script>
 
 <style scoped>
-  .el-main {
-    padding: 15px;
-  }
+
 </style>

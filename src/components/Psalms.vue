@@ -5,8 +5,11 @@
         <el-card shadow="hover" class="box-card" v-for="psalm in psalms" :key="psalm.id">
           <div class="psalm-name clearfix">
             <span>{{ psalm.name }}, s {{ psalm.page_number }}</span>
-            <el-button class="open-button" type="primary"
+            <router-link :to="{ name: 'psalmDetails', params: { psalmID: psalm.id }}">
+              <!-- {{psalm.name}} -->
+              <el-button class="open-button" type="primary"
               icon="el-icon-edit" round>Otwórz</el-button>
+            </router-link>
           </div>
         </el-card>
       </el-col>
@@ -15,49 +18,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Psalms',
-  data() {
-    return {
-      psalms: [
-        {
-          name: 'Test 1',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-        {
-          name: 'Test 2',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-        {
-          name: 'Test 3',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-        {
-          name: 'Test 4',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-        {
-          name: 'Test 5',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-        {
-          name: 'Test 6',
-          page_number: 240,
-          card_color: 'white',
-          default_image: 'http://127.0.0.1:8000/media/psalms/1/images/Icona_maria_kiko.jpg',
-        },
-      ],
-    };
+  computed: {
+    ...mapState(['psalms']),
+  },
+  created() {
+    this.$store.dispatch('getPsalms');
   },
 };
 </script>
@@ -65,11 +34,6 @@ export default {
 <style scoped>
   .box-card {
     margin-bottom: 1rem;
-  }
-
-  .wrapper {
-    padding: 0 20px;
-    min-height: 75vh;
   }
 
   .open-button {

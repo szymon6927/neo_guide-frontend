@@ -1,22 +1,28 @@
 <template>
   <el-aside>
-    <img class="main-logo" src="../assets/img/logo.png" width="150px" />
+    <router-link :to="{ name: 'home'}">
+      <img class="main-logo" src="../assets/img/logo.png" width="150px" />
+    </router-link>
     <h1 class="app-name">Neo Guide</h1>
-    <el-menu class="main-menu" background-color="#fafafa" text-color="#000"
-      active-text-color="#ffd04b">
-      <el-menu-item index="1">
+    <el-menu :router="true" :default-active="$route.path" class="main-menu"
+      background-color="#fafafa" text-color="#000" active-text-color="#cc810d">
+      <el-menu-item index="/">
+        <i class="el-icon-s-home"></i>
+        <span>Home</span>
+      </el-menu-item>
+      <el-menu-item index="/psalms">
         <i class="el-icon-menu"></i>
         <span>Pieśni</span>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="/about">
         <i class="el-icon-s-custom"></i>
         <span>O nas</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="/contact">
         <i class="el-icon-phone"></i>
         <span>Kontakt</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="/help">
         <i class="el-icon-setting"></i>
         <span>Pomoc</span>
       </el-menu-item>
@@ -28,6 +34,11 @@
 <script>
 export default {
   name: 'SideBar',
+  data() {
+    return {
+      activeLink: '/',
+    };
+  },
 };
 </script>
 
@@ -38,11 +49,29 @@ export default {
     border-right: 1px solid #EBEEF5;
   }
 
-  .el-main {
+  .el-menu {
     border-right: none;
+  }
+
+  .app-name {
+    font-size: 24px;
   }
 
   .main-logo {
     margin-top: 1.5rem;
+  }
+
+  .el-menu-item {
+    font-size: 16px;
+  }
+
+  .el-menu-item:focus, .el-menu-item:hover {
+    outline: 0;
+    background-color: #b8892e !important;
+    color: #fff !important;
+  }
+
+  .el-menu-item:focus i, .el-menu-item:hover i {
+    color: #fff !important;
   }
 </style>

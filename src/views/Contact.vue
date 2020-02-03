@@ -3,9 +3,7 @@
     <NavBar />
     <el-container>
       <el-main>
-        <div class="wrapper">
-          <p>O nas</p>
-        </div>
+        <p>Kontakt</p>
         <Footer />
       </el-main>
     </el-container>
