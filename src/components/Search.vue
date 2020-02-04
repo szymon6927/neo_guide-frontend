@@ -1,35 +1,35 @@
 <template>
   <el-header>
     <el-row>
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="8">
+      <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
         <el-input placeholder="Nazwa pieśni, strona" v-model="search" prefix-icon="el-icon-search"
           v-on:input="filterPsalms" class="psalms-search"></el-input>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="3">
+      <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select class="filter" clearable @change="filterPsalms"
           :disabled="cardFilteringDisabled" v-model="psalmsCardColor" placeholder="Kolor kartki">
-        <el-option
-          v-for="item in cardColorOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
+          <el-option
+            v-for="item in cardColorOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
         </el-select>
       </el-col>
 
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="3">
+      <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select class="filter sorting" clearable @change="filterPsalms"
           :disabled="sortingDisabled" v-model="psalmsSorting" placeholder="Sortowanie">
-        <el-option
-          v-for="item in sortingOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
+          <el-option
+            v-for="item in sortingOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
         </el-select>
       </el-col>
 
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="2">
+      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
         <el-button type="warning" class="clear-filters" round
           @click="clearFilters">Wyczyść</el-button>
       </el-col>
@@ -149,6 +149,10 @@ export default {
 
   .el-select-dropdown__item {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  .el-select-dropdown__item.selected {
+    color: #e6a23d;
   }
 
   @media (max-width: 768px) {

@@ -21,6 +21,7 @@ export default new Vuex.Store({
     psalmsSearchValue: '',
     psalmsSearchCardColorValue: '',
     psalmsSearchSortingValue: '',
+    loading: false,
   },
   getters: {
     psalms(state) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     psalmsSearchValue(state) {
       return state.psalmsSearchValue;
+    },
+    loading(state) {
+      return state.loading;
     },
   },
   mutations: {
@@ -47,14 +51,22 @@ export default new Vuex.Store({
     SET_PSALMS_SEARCH_SORTING_VALUE(state, payload) {
       state.psalmsSearchSortingValue = payload;
     },
+    SET_LOADING(state, payload) {
+      state.loading = payload;
+    },
   },
   actions: {
     async getPsalms(context) {
+      context.commit('SET_LOADING', true);
+
       const response = await neoGuideAPI().get(PSALMS);
       context.commit('SET_PSALMS', response.data.results);
+      context.commit('SET_LOADING', false);
     },
 
     async getFilteredPsalms(context) {
+      context.commit('SET_LOADING', true);
+
       let url = `${PSALMS}?search=${this.state.psalmsSearchValue}`;
 
       if (this.state.psalmsSearchCardColorValue !== '') {
@@ -67,6 +79,11 @@ export default new Vuex.Store({
 
       const response = await neoGuideAPI().get(url);
       context.commit('SET_PSALMS', response.data.results);
+      context.commit('SET_LOADING', false);
+    },
+
+    loading(context, payload) {
+      context.commit('SET_LOADING', payload);
     },
   },
   modules: {

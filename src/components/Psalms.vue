@@ -27,9 +27,7 @@ export default {
   name: 'Psalms',
   computed: {
     ...mapState(['psalms']),
-    ...mapGetters([
-      'psalms',
-    ]),
+    ...mapGetters(['psalms']),
   },
 };
 </script>

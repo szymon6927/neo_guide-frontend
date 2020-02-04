@@ -21,16 +21,17 @@ export default {
   .el-footer {
     height: auto !important;
     border-top: 1px solid #EBEEF5;
-    margin-top: 2rem;
-    padding-top: 2rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .el-footer .copyright {
-      text-align: left
+    text-align: left
   }
 
   .el-footer .author {
-      text-align: right;
+    text-align: right;
   }
 
   @media (max-width: 992px) {

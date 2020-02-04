@@ -9,7 +9,10 @@
 
         <el-col :span="24">
           <el-main>
-            <p>Home Page</p>
+            <div class="content-wrapper">
+              <h1>Home</h1>
+              <el-divider><i class="el-icon-more"></i></el-divider>
+            </div>
             <Footer />
           </el-main>
         </el-col>

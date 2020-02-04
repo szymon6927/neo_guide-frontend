@@ -1,10 +1,19 @@
+h1 {
+  font-size: 1.7rem;
+}
+
 .el-main {
   padding: 15px;
 }
 
 .wrapper {
   padding: 0 20px;
-  min-height: 75vh;
+  min-height: calc(100vh - 265px);
+}
+
+.content-wrapper {
+  padding: 0 20px;
+  min-height: calc(100vh - 180px);
 }
 
 .main-row {

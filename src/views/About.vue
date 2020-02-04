@@ -9,8 +9,9 @@
 
         <el-col :span="24">
           <el-main>
-            <div class="wrapper">
-              <p>O nas</p>
+            <div class="content-wrapper">
+              <h1>O nas</h1>
+              <el-divider><i class="el-icon-more"></i></el-divider>
             </div>
             <Footer />
           </el-main>

@@ -1,11 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="loading">
     <router-view/>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
+  computed: {
+    ...mapState(['loading']),
+  },
   created() {
     this.$store.dispatch('getPsalms');
   },
