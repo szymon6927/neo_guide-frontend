@@ -12,7 +12,7 @@
         <span>Home</span>
       </el-menu-item>
       <el-menu-item index="/psalms">
-        <i class="el-icon-menu"></i>
+        <i class="el-icon-message-solid"></i>
         <span>Pieśni</span>
       </el-menu-item>
       <el-menu-item index="/about">

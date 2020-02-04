@@ -11,6 +11,22 @@
   width: 100%;
 }
 
+.el-card.yellow {
+  background-color: #fefe90;
+}
+
+.el-card.green {
+  background-color: #5cfe74;
+}
+
+.el-card.grey {
+  background-color: #ada894;
+}
+
+.el-card.blue {
+  background-color: #66efff;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */

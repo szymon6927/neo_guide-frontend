@@ -32,10 +32,11 @@
         <div class="psalm-image">
           <h3>Zdjęcie:</h3>
           <div class="demo-image__error">
-            <div class="block">
+            <div class="block" :class="{'no-image': !psalm.default_image}">
               <el-image :src="psalm.default_image">
                 <div slot="error" class="image-slot">
                   <i class="el-icon-picture-outline"></i>
+                  <div>Brak zdjęcia</div>
                 </div>
               </el-image>
             </div>
@@ -97,5 +98,19 @@ export default {
   .psalm-image .block {
     -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  }
+
+  .demo-image__error .block.no-image {
+    text-align: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .audio-player {
+      width: 100%;
+    }
   }
 </style>
