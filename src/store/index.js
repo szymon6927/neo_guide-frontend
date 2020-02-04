@@ -1,11 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersist from 'vuex-persist';
 
 import { neoGuideAPI, PSALMS } from '@/api';
+
+const vuexPersist = new VuexPersist({
+  key: 'neoguide-app',
+  storage: window.localStorage,
+  reducer: state => ({
+    psalms: state.psalms,
+  }),
+});
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [vuexPersist.plugin],
   state: {
     psalms: [],
     psalmsSearchValue: '',
@@ -18,7 +28,6 @@ export default new Vuex.Store({
     },
     psalm: state => (id) => {
       const psalm = state.psalms.filter(p => p.id === Number(id))[0];
-      console.log('psalm: ', psalm);
       return psalm;
     },
     psalmsSearchValue(state) {
@@ -42,7 +51,6 @@ export default new Vuex.Store({
   actions: {
     async getPsalms(context) {
       const response = await neoGuideAPI().get(PSALMS);
-      console.log('response.data: ', response.data);
       context.commit('SET_PSALMS', response.data.results);
     },
 
@@ -58,7 +66,6 @@ export default new Vuex.Store({
       }
 
       const response = await neoGuideAPI().get(url);
-      console.log('response.data: ', response.data);
       context.commit('SET_PSALMS', response.data.results);
     },
   },

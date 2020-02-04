@@ -31,11 +31,6 @@ export default {
       'psalms',
     ]),
   },
-  created() {
-    if (this.psalms.length === 0) {
-      this.$store.dispatch('getPsalms');
-    }
-  },
 };
 </script>
 

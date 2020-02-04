@@ -7,7 +7,7 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="3">
         <el-select class="filter" clearable @change="filterPsalms"
-          v-model="psalmsCardColor" placeholder="Kolor kartki">
+          :disabled="cardFilteringDisabled" v-model="psalmsCardColor" placeholder="Kolor kartki">
         <el-option
           v-for="item in cardColorOptions"
           :key="item.value"
@@ -19,7 +19,7 @@
 
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="3">
         <el-select class="filter sorting" clearable @change="filterPsalms"
-          v-model="psalmsSorting" placeholder="Sortowanie">
+          :disabled="sortingDisabled" v-model="psalmsSorting" placeholder="Sortowanie">
         <el-option
           v-for="item in sortingOptions"
           :key="item.value"
@@ -73,6 +73,8 @@ export default {
         value: '-page_number',
         label: 'Po numerze strony (malejąco)',
       }],
+      sortingDisabled: this.isSelectDisabled(),
+      cardFilteringDisabled: this.isSelectDisabled(),
     };
   },
   computed: {
@@ -110,11 +112,13 @@ export default {
       }
     }, 500),
     clearFilters() {
-      console.log('clear');
       this.search = '';
       this.psalmsCardColor = '';
       this.psalmsSorting = '';
       this.$store.dispatch('getFilteredPsalms');
+    },
+    isSelectDisabled() {
+      return this.$route.name !== 'psalms';
     },
   },
 };
@@ -145,5 +149,11 @@ export default {
 
   .el-select-dropdown__item {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .filter {
+      width: 100%;
+    }
   }
 </style>
