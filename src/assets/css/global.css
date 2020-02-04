@@ -7,6 +7,10 @@
   min-height: 75vh;
 }
 
+.main-row {
+  width: 100%;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */

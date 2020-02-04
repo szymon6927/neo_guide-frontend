@@ -1,39 +1,38 @@
 <template>
-  <div>
-    <el-aside v-bind:class="{ collapsed: isCollapse }">
-      <router-link :to="{ name: 'home'}">
-        <img class="main-logo" src="../assets/img/logo.png" width="150px" v-if="!isCollapse" />
-      </router-link>
-      <h1 class="app-name" v-if="!isCollapse">Neo Guide</h1>
-      <el-menu :router="true" :default-active="$route.path" class="main-menu"
-        background-color="#fafafa" text-color="#000" active-text-color="#cc810d"
-        :collapse="isCollapse" @open="handleOpen" @close="handleClose">
-        <el-menu-item index="/">
-          <i class="el-icon-s-home"></i>
-          <span>Home</span>
-        </el-menu-item>
-        <el-menu-item index="/psalms">
-          <i class="el-icon-menu"></i>
-          <span>Pieśni</span>
-        </el-menu-item>
-        <el-menu-item index="/about">
-          <i class="el-icon-s-custom"></i>
-          <span>O nas</span>
-        </el-menu-item>
-        <el-menu-item index="/contact">
-          <i class="el-icon-phone"></i>
-          <span>Kontakt</span>
-        </el-menu-item>
-        <el-menu-item index="/help">
-          <i class="el-icon-setting"></i>
-          <span>Pomoc</span>
-        </el-menu-item>
-      </el-menu>
-      <el-button type="primary" v-on:click="toggleCollapse"
-        icon="el-icon-s-fold" v-if="!isCollapse">Hide menu</el-button>
-      <el-button icon="el-icon-more" v-on:click="toggleCollapse" v-else circle></el-button>
-    </el-aside>
-  </div>
+  <el-aside v-bind:class="{ collapsed: isCollapse }">
+    <router-link :to="{ name: 'home'}">
+      <img class="main-logo" src="../assets/img/logo.png" width="150px" v-if="!isCollapse" />
+    </router-link>
+    <h1 class="app-name" v-if="!isCollapse">Neo Guide</h1>
+    <el-menu :router="true" :default-active="$route.path" class="main-menu"
+      background-color="#fafafa" text-color="#000" active-text-color="#cc810d"
+      :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+      <el-menu-item index="/">
+        <i class="el-icon-s-home"></i>
+        <span>Home</span>
+      </el-menu-item>
+      <el-menu-item index="/psalms">
+        <i class="el-icon-menu"></i>
+        <span>Pieśni</span>
+      </el-menu-item>
+      <el-menu-item index="/about">
+        <i class="el-icon-s-custom"></i>
+        <span>O nas</span>
+      </el-menu-item>
+      <el-menu-item index="/contact">
+        <i class="el-icon-phone"></i>
+        <span>Kontakt</span>
+      </el-menu-item>
+      <el-menu-item index="/help">
+        <i class="el-icon-setting"></i>
+        <span>Pomoc</span>
+      </el-menu-item>
+    </el-menu>
+    <el-button class="hide-menu" type="warning" round v-on:click="toggleCollapse"
+      icon="el-icon-s-fold" v-if="!isCollapse">Ukryj menu</el-button>
+    <el-button class="show-menu" icon="el-icon-more" v-on:click="toggleCollapse"
+      v-else circle></el-button>
+  </el-aside>
 </template>
 
 
@@ -90,6 +89,14 @@ export default {
 
   .el-menu-item {
     font-size: 16px;
+  }
+
+  .hide-menu {
+    margin-top: 3rem;
+  }
+
+  .show-menu {
+    margin-top: 1rem;
   }
 
   .el-menu-item:focus, .el-menu-item:hover {
