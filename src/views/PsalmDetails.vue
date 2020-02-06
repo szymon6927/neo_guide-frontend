@@ -4,15 +4,13 @@
     <el-container>
       <el-row class="main-row">
         <el-col :span="24">
-          <TopBar name="O nas" />
+          <TopBar :name=topBarName />
         </el-col>
 
         <el-col :span="24">
           <el-main>
-            <div class="content-wrapper">
-              <h1>O nas</h1>
-              <el-divider><i class="el-icon-more"></i></el-divider>
-            </div>
+            <Search />
+            <Psalm v-bind="$props" />
             <Footer />
           </el-main>
         </el-col>
@@ -24,14 +22,24 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
+import Search from '@/components/Search.vue';
+import Psalm from '@/components/Psalm.vue';
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  name: 'home',
+  name: 'psalmDetails',
+  props: ['psalmID'],
   components: {
     NavBar,
     Footer,
+    Search,
+    Psalm,
     TopBar,
+  },
+  data() {
+    return {
+      topBarName: `Pieśń / ${this.psalmID}`,
+    };
   },
 };
 </script>

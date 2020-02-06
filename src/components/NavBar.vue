@@ -1,33 +1,57 @@
 <template>
-  <el-aside>
-    <img class="main-logo" src="../assets/img/logo.png" width="150px" />
-    <h1 class="app-name">Neo Guide</h1>
-    <el-menu class="main-menu" background-color="#fafafa" text-color="#000"
-      active-text-color="#ffd04b">
-      <el-menu-item index="1">
-        <i class="el-icon-menu"></i>
+  <el-aside v-bind:class="{ collapsed: isCollapse }">
+    <router-link :to="{ name: 'home'}">
+      <img class="main-logo" src="../assets/img/logo.png" width="150px" v-if="!isCollapse" />
+    </router-link>
+    <h1 class="app-name" v-if="!isCollapse">Neo Guide</h1>
+    <el-menu :router="true" :default-active="$route.path" class="main-menu"
+      background-color="#fafafa" text-color="#000" active-text-color="#cc810d"
+      :collapse="isCollapse">
+      <el-menu-item index="/">
+        <i class="el-icon-s-home"></i>
+        <span>Home</span>
+      </el-menu-item>
+      <el-menu-item index="/psalms">
+        <i class="el-icon-message-solid"></i>
         <span>Pieśni</span>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="/about">
         <i class="el-icon-s-custom"></i>
         <span>O nas</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="/contact">
         <i class="el-icon-phone"></i>
         <span>Kontakt</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="/help">
         <i class="el-icon-setting"></i>
         <span>Pomoc</span>
       </el-menu-item>
     </el-menu>
+    <el-button class="hide-menu" type="warning" round v-on:click="toggleCollapse"
+      icon="el-icon-s-fold" v-if="!isCollapse">Ukryj menu</el-button>
+    <el-button class="show-menu" icon="el-icon-more" v-on:click="toggleCollapse"
+      v-else circle></el-button>
   </el-aside>
 </template>
 
 
 <script>
+import isMobile from '../utils';
+
 export default {
   name: 'SideBar',
+  data() {
+    return {
+      activeLink: '/',
+      isCollapse: isMobile(),
+    };
+  },
+  methods: {
+    toggleCollapse() {
+      this.isCollapse = !this.isCollapse;
+    },
+  },
 };
 </script>
 
@@ -38,11 +62,41 @@ export default {
     border-right: 1px solid #EBEEF5;
   }
 
-  .el-main {
+  .el-aside.collapsed {
+    width: 65px !important;
+  }
+
+  .el-menu {
     border-right: none;
+  }
+
+  .app-name {
+    font-size: 24px;
   }
 
   .main-logo {
     margin-top: 1.5rem;
+  }
+
+  .el-menu-item {
+    font-size: 16px;
+  }
+
+  .hide-menu {
+    margin-top: 3rem;
+  }
+
+  .show-menu {
+    margin-top: 1rem;
+  }
+
+  .el-menu-item:focus, .el-menu-item:hover {
+    outline: 0;
+    background-color: #b8892e !important;
+    color: #fff !important;
+  }
+
+  .el-menu-item:focus i, .el-menu-item:hover i {
+    color: #fff !important;
   }
 </style>

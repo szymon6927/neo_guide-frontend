@@ -1,0 +1,41 @@
+h1 {
+  font-size: 1.7rem;
+}
+
+.el-main {
+  padding: 15px;
+}
+
+.wrapper {
+  padding: 0 20px;
+  min-height: calc(100vh - 265px);
+}
+
+.content-wrapper {
+  padding: 0 20px;
+  min-height: calc(100vh - 180px);
+}
+
+.main-row {
+  width: 100%;
+}
+
+.el-card.yellow {
+  background-color: #fefe90;
+}
+
+.el-card.green {
+  background-color: #5cfe74;
+}
+
+.el-card.grey {
+  background-color: #c8c2b4;
+}
+
+.el-card.blue {
+  background-color: #66efff;
+}
+
+/* .audio-player a {
+  padding: 0 10px !important;
+} */
