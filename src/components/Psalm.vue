@@ -10,7 +10,6 @@
           <h3>Strona: {{ psalm.page_number }}</h3>
         </div>
 
-        <!-- <hr class="divider"> -->
         <el-divider><i class="el-icon-s-grid"></i></el-divider>
       </el-col>
 
@@ -33,7 +32,7 @@
           <h3>Zdjęcie:</h3>
           <div class="demo-image__error">
             <div class="block" :class="{'no-image': !psalm.default_image}">
-              <el-image :src="psalm.default_image">
+              <el-image :src="psalm.default_image" :preview-src-list="[psalm.default_image]">
                 <div slot="error" class="image-slot">
                   <i class="el-icon-picture-outline"></i>
                   <div>Brak zdjęcia</div>
@@ -42,6 +41,7 @@
             </div>
           </div>
         </div>
+
       </el-col>
     </el-row>
   </el-container>

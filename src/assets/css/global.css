@@ -36,6 +36,10 @@ h1 {
   background-color: #66efff;
 }
 
+.el-image-viewer__close {
+  color: #fff;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */
