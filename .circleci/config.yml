@@ -11,7 +11,7 @@ commands:
       - aws-cli/install
       - run:
           name: Deploy to S3
-          command: aws s3 sync --acl public-read dist/ s3://neo-guide-fe --delete
+          command: aws s3 sync --acl public-read dist/ s3://neoguide.pl --delete
 
 executors:
   node_defaults:
