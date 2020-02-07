@@ -12,6 +12,8 @@ export default {
     ...mapState(['loading']),
   },
   created() {
+    console.log('window.location.hostname', window.location.hostname);
+    console.log('window.location.hostname === "localhost"', window.location.hostname === 'localhost');
     this.$store.dispatch('getPsalms');
   },
 };
