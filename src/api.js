@@ -1,19 +1,14 @@
 import axios from 'axios';
 
 function checkIfIsDevelopment() {
-  console.log('checkIfIsDevelopment');
   return window.location.hostname === 'localhost';
 }
 
 function getBaseURL(isInDevelopmentMode) {
-  console.log('isInDevelopmentMode', isInDevelopmentMode);
-
   if (isInDevelopmentMode) {
-    console.log('isInDevelopmentMode: ', isInDevelopmentMode);
     return 'http://127.0.0.1:8000/api/v1/';
   }
 
-  console.log('isInDevelopmentMode: ', isInDevelopmentMode);
   return 'https://api.neoguide.pl/api/v1/';
 }
 
