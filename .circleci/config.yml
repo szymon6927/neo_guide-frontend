@@ -87,6 +87,6 @@ workflows:
       - deploy:
           requires:
             - build_statics
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
