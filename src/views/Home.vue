@@ -12,6 +12,91 @@
             <div class="content-wrapper">
               <h1>Home</h1>
               <el-divider><i class="el-icon-more"></i></el-divider>
+              <div class="main-content">
+
+                <el-row :gutter="20">
+                  <el-col :span="12" :offset="6">
+                    <div class="image-wrapper">
+                      <img class="main" src="../assets/img/content/spiewnik_neo.png" />
+                    </div>
+                  </el-col>
+                </el-row>
+
+                <el-divider><i class="el-icon-more"></i></el-divider>
+
+                <el-row>
+                  <el-col :span="24">
+                    <h2 class="text-center">Witajcie bracia i siostry!</h2>
+
+                    <p>
+                      Aplikacja <strong>Neo Guide</strong>, powstała jako pomoc dla członków
+                      or kantorów wspólnot <strong>neokatechumenalnych</strong>
+                      ma być wersją online śpiewnika <strong>"Zmartwychwsał Pan 2018"</strong>
+                    </p>
+
+                    <div>
+                      <p>Lista dostępnych na ten moment funkcjonalności</p>
+                      <ul>
+                        <li>lista wszystkich pieśni wraz z ich nagraniami oraz zdjęciem</li>
+                        <li>możliwość wyszukiwania pieśni po ich tytule</li>
+                        <li>możliwość wyszukiwania pieśni po numerze strony</li>
+                        <li>możliwość filtrowania pieśni względem koloru kartki</li>
+                        <li>możliwość sortowania pieśni</li>
+                        <ul>
+                          <li>po nazwie malejąco</li>
+                          <li>po nazwie rosnąco</li>
+                          <li>po numerze strony malejąco</li>
+                          <li>po numerze strony rosnąco</li>
+                        </ul>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <p>Planowane są również inne funkcjonalności, ale o tym w przyszłości :)</p>
+                    </div>
+                  </el-col>
+                </el-row>
+
+                <el-divider><i class="el-icon-more"></i></el-divider>
+
+                <el-row>
+                  <el-col :span="24">
+                    <section>
+                      <h2 class="text-center">Nawigacja</h2>
+
+                      <div class="navigation text-center">
+                        <router-link :to="{ name: 'home'}">
+                          <el-button type="warning">Strona Główna</el-button>
+                        </router-link>
+                        <router-link :to="{ name: 'pslams'}">
+                          <el-button type="warning">Pieśni</el-button>
+                        </router-link>
+                        <router-link :to="{ name: 'about'}">
+                          <el-button type="warning">O nas</el-button>
+                        </router-link>
+                        <router-link :to="{ name: 'contact'}">
+                          <el-button type="warning">Kontakt</el-button>
+                        </router-link>
+                        <router-link :to="{ name: 'help'}">
+                          <el-button type="warning">Pomoc</el-button>
+                        </router-link>
+                      </div>
+                    </section>
+
+                  </el-col>
+                </el-row>
+
+                <el-divider><i class="el-icon-more"></i></el-divider>
+
+                <el-row :gutter="20">
+                  <el-col :span="12" :offset="6">
+                    <div class="image-wrapper">
+                      <img class="logo" src="../assets/img/content/logo_ave_maria.jpg" />
+                    </div>
+                  </el-col>
+                </el-row>
+
+              </div>
             </div>
             <Footer />
           </el-main>
@@ -37,5 +122,34 @@ export default {
 </script>
 
 <style scoped>
+  .main-content {
+    text-align: left;
+  }
 
+  .image-wrapper {
+    text-align: center;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+  }
+
+  .image-wrapper .main {
+    width: 80%;
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  }
+
+  .image-wrapper .logo {
+    width: 40%;
+  }
+
+  .navigation {
+    margin-bottom: 2rem;
+  }
+
+  .navigation button {
+    margin-right: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 </style>

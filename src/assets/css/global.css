@@ -40,6 +40,10 @@ h1 {
   color: #fff;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */
