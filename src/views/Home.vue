@@ -20,6 +20,7 @@
                       <img class="main" src="../assets/img/content/spiewnik_neo.png" />
                     </div>
                   </el-col>
+
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <h2 class="text-center">Witajcie bracia i siostry!</h2>
 
@@ -83,8 +84,9 @@
 
                 <el-divider><i class="el-icon-more"></i></el-divider>
 
-                <el-row :gutter="20">
-                  <el-col :span="12" :offset="6">
+                <el-row>
+                  <el-col :xs="24" :sm="24" :md="24" :lg="{span: 12, offset: 6}"
+                    :xl="{span: 12, offset: 6}">
                     <div class="image-wrapper">
                       <img class="logo" src="../assets/img/content/logo_ave_maria.jpg" />
                     </div>
