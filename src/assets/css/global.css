@@ -44,6 +44,10 @@ h1 {
   text-align: center;
 }
 
+.break-word {
+  word-break: break-word;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */
