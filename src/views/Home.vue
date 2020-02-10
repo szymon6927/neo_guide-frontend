@@ -136,8 +136,8 @@ export default {
 
   .image-wrapper .main {
     width: 80%;
-    -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
   }
 
   .image-wrapper .logo {
@@ -152,4 +152,5 @@ export default {
     margin-right: 1.5rem;
     margin-bottom: 0.5rem;
   }
+
 </style>

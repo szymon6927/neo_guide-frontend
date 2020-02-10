@@ -10,8 +10,43 @@
         <el-col :span="24">
           <el-main>
             <div class="content-wrapper">
-              <h1>O nas</h1>
+              <h2>O nas</h2>
               <el-divider><i class="el-icon-more"></i></el-divider>
+
+              <el-row :gutter="20">
+                <el-col :span="12" :offset="6">
+                  <div class="image-wrapper">
+                    <img class="logo" src="../assets/img/content/logo_ave_maria.jpg" />
+                  </div>
+                </el-col>
+              </el-row>
+
+              <el-divider><i class="el-icon-more"></i></el-divider>
+
+              <div class="main-content">
+                <el-row>
+                  <el-col :span="24">
+                    <h2 class="text-center">Autor</h2>
+                    <p class="author"><strong>Szymon Miks</strong></p>
+                    <p>
+                      <span class="name"><strong>Facebook:</strong></span>
+                      <a href="https://www.facebook.com/szymon.miks" target="_blank">https://www.facebook.com/szymon.miks</a>
+                    </p>
+                    <p>
+                      <span class="name"><strong>GitHub:</strong></span>
+                      <a href="https://github.com/szymon6927" target="_blank">https://github.com/szymon6927</a>
+                    </p>
+                    <p>
+                      <span class="name"><strong>E-mail:</strong></span>
+                      <a href="mailto:miks.szymon@gmail.com">miks.szymon@gmail.com</a></p>
+                    <p>
+                      <span class="name"><strong>Strona WWW:</strong></span>
+                      <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
+                    </p>
+
+                  </el-col>
+                </el-row>
+              </div>
             </div>
             <Footer />
           </el-main>
@@ -37,5 +72,16 @@ export default {
 </script>
 
 <style scoped>
+  .author {
+    font-size: 18px;
+  }
 
+  .name {
+    margin-right: 10px;
+  }
+
+  .image-wrapper .logo {
+    width: 40%;
+    margin: 1rem 0;
+  }
 </style>
