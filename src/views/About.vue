@@ -10,16 +10,7 @@
         <el-col :span="24">
           <el-main>
             <div class="content-wrapper">
-              <h2>O nas</h2>
-              <!-- <el-divider><i class="el-icon-more"></i></el-divider>
-
-              <el-row :gutter="20">
-                <el-col :span="12" :offset="6">
-                  <div class="image-wrapper">
-                    <img class="logo" src="../assets/img/content/logo_ave_maria.jpg" />
-                  </div>
-                </el-col>
-              </el-row> -->
+              <h1>O nas</h1>
 
               <el-divider><i class="el-icon-more"></i></el-divider>
 
@@ -38,7 +29,8 @@
                     </p>
                     <p>
                       <span class="name"><strong>E-mail:</strong></span>
-                      <a href="mailto:miks.szymon@gmail.com">miks.szymon@gmail.com</a></p>
+                      <a href="mailto:miks.szymon@gmail.com">miks.szymon@gmail.com</a>
+                    </p>
                     <p>
                       <span class="name"><strong>Strona WWW:</strong></span>
                       <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
