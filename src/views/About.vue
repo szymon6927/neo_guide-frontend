@@ -11,7 +11,7 @@
           <el-main>
             <div class="content-wrapper">
               <h2>O nas</h2>
-              <el-divider><i class="el-icon-more"></i></el-divider>
+              <!-- <el-divider><i class="el-icon-more"></i></el-divider>
 
               <el-row :gutter="20">
                 <el-col :span="12" :offset="6">
@@ -19,13 +19,13 @@
                     <img class="logo" src="../assets/img/content/logo_ave_maria.jpg" />
                   </div>
                 </el-col>
-              </el-row>
+              </el-row> -->
 
               <el-divider><i class="el-icon-more"></i></el-divider>
 
               <div class="main-content">
                 <el-row>
-                  <el-col :span="24">
+                  <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <h2 class="text-center">Autor</h2>
                     <p class="author"><strong>Szymon Miks</strong></p>
                     <p>
@@ -44,6 +44,10 @@
                       <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
                     </p>
 
+                  </el-col>
+
+                  <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+                    <img src="../assets/img/content/undraw_feeling_proud_qne1.png" width="100%"/>
                   </el-col>
                 </el-row>
               </div>
