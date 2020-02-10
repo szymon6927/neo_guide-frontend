@@ -96,8 +96,11 @@ export default {
   }
 
   .psalm-image .block {
-    -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    text-align: center;
+  }
+
+  .psalm-image .block .el-image {
+    border: 1px solid #DCDFE6;
   }
 
   .demo-image__error .block.no-image {
