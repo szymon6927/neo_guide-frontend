@@ -3,6 +3,8 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import VueAnalytics from 'vue-analytics';
+
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -13,6 +15,10 @@ import './assets/css/global.css';
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
+Vue.use(VueAnalytics, {
+  id: 'UA-122028664-3',
+  router,
+});
 
 new Vue({
   router,
