@@ -1,10 +1,19 @@
 import axios from 'axios';
 
-const isDevelopment = window.location.hostname === 'usedcars.staging.devguru.co'
-  || window.location.hostname === 'localhost';
-const BASE_URL = isDevelopment
-  ? 'http://127.0.0.1:8000/api/v1/'
-  : 'http://127.0.0.1:8000/api/v1/';
+function checkIfIsDevelopment() {
+  return window.location.hostname === 'localhost';
+}
+
+function getBaseURL(isInDevelopmentMode) {
+  if (isInDevelopmentMode) {
+    return 'http://127.0.0.1:8000/api/v1/';
+  }
+
+  return 'https://api.neoguide.pl/api/v1/';
+}
+
+const isDevelopment = checkIfIsDevelopment();
+const BASE_URL = getBaseURL(isDevelopment);
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
