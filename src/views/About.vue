@@ -17,25 +17,26 @@
               <div class="main-content">
                 <el-row>
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                    <h2 class="text-center">Autor</h2>
-                    <p class="author"><strong>Szymon Miks</strong></p>
-                    <p>
-                      <span class="name"><strong>Facebook:</strong></span>
-                      <a href="https://www.facebook.com/szymon.miks" target="_blank">https://www.facebook.com/szymon.miks</a>
-                    </p>
-                    <p>
-                      <span class="name"><strong>GitHub:</strong></span>
-                      <a href="https://github.com/szymon6927" target="_blank">https://github.com/szymon6927</a>
-                    </p>
-                    <p>
-                      <span class="name"><strong>E-mail:</strong></span>
-                      <a href="mailto:miks.szymon@gmail.com">miks.szymon@gmail.com</a>
-                    </p>
-                    <p>
-                      <span class="name"><strong>Strona WWW:</strong></span>
-                      <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
-                    </p>
-
+                    <div class="break-word">
+                      <h2 class="text-center">Autor</h2>
+                      <p class="author"><strong>Szymon Miks</strong></p>
+                      <p>
+                        <span class="name"><strong>Facebook:</strong></span>
+                        <a href="https://www.facebook.com/szymon.miks" target="_blank">https://www.facebook.com/szymon.miks</a>
+                      </p>
+                      <p>
+                        <span class="name"><strong>GitHub:</strong></span>
+                        <a href="https://github.com/szymon6927" target="_blank">https://github.com/szymon6927</a>
+                      </p>
+                      <p>
+                        <span class="name"><strong>E-mail:</strong></span>
+                        <a href="mailto:miks.szymon@gmail.com">miks.szymon@gmail.com</a>
+                      </p>
+                      <p>
+                        <span class="name"><strong>Strona WWW:</strong></span>
+                        <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
+                      </p>
+                    </div>
                   </el-col>
 
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
