@@ -14,18 +14,13 @@
               <el-divider><i class="el-icon-more"></i></el-divider>
               <div class="main-content">
 
-                <el-row :gutter="20">
-                  <el-col :span="12" :offset="6">
+                <el-row>
+                  <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <div class="image-wrapper">
                       <img class="main" src="../assets/img/content/spiewnik_neo.png" />
                     </div>
                   </el-col>
-                </el-row>
-
-                <el-divider><i class="el-icon-more"></i></el-divider>
-
-                <el-row>
-                  <el-col :span="24">
+                  <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <h2 class="text-center">Witajcie bracia i siostry!</h2>
 
                     <p>
