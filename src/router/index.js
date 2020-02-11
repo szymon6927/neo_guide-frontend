@@ -8,6 +8,8 @@ import Help from '../views/Help.vue';
 import PsalmDetails from '../views/PsalmDetails.vue';
 import NotFound from '../views/NotFound.vue';
 
+import store from '../store/index';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -52,6 +54,12 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.afterEach(() => {
+  if (store.state.isMobile) {
+    store.commit('SET_HIDE_MENU', true);
+  }
 });
 
 export default router;

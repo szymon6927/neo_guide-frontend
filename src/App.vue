@@ -1,18 +1,32 @@
 <template>
   <div id="app" v-loading="loading">
     <router-view/>
+    <MenuOverlay />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import MenuOverlay from '@/components/MenuOverlay.vue';
 
 export default {
+  components: {
+    MenuOverlay,
+  },
   computed: {
-    ...mapState(['loading']),
+    ...mapState(['loading', 'hideMenu', 'isMobile']),
   },
   created() {
     this.$store.dispatch('getPsalms');
+  },
+  methods: {
+    toggleCollapse() {
+      if (!this.isMobile) {
+        this.$store.commit('SET_IS_COLLAPSE', !this.isCollapse);
+      } else {
+        this.$store.commit('SET_HIDE_MENU', !this.hideMenu);
+      }
+    },
   },
 };
 </script>

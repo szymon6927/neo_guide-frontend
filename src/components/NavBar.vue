@@ -1,5 +1,5 @@
 <template>
-  <el-aside v-bind:class="{ collapsed: isCollapse }">
+  <el-aside v-bind:class="{ collapsed: isCollapse, mobile: isMobile }" v-if="!hideMenu">
     <router-link :to="{ name: 'home'}">
       <img class="main-logo" src="../assets/img/logo.png" width="150px" v-if="!isCollapse" />
     </router-link>
@@ -37,19 +37,26 @@
 
 
 <script>
-import isMobile from '../utils';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'SideBar',
+  computed: {
+    ...mapState(['isMobile', 'hideMenu', 'isCollapse']),
+    ...mapGetters(['isMobile', 'hideMenu', 'isCollapse']),
+  },
   data() {
     return {
       activeLink: '/',
-      isCollapse: isMobile(),
     };
   },
   methods: {
     toggleCollapse() {
-      this.isCollapse = !this.isCollapse;
+      if (!this.isMobile) {
+        this.$store.commit('SET_IS_COLLAPSE', !this.isCollapse);
+      } else {
+        this.$store.commit('SET_HIDE_MENU', !this.hideMenu);
+      }
     },
   },
 };
@@ -64,6 +71,18 @@ export default {
 
   .el-aside.collapsed {
     width: 65px !important;
+  }
+
+  .el-aside.mobile {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: 100%;
+    font-size: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: scroll;
   }
 
   .el-menu {
@@ -98,5 +117,11 @@ export default {
 
   .el-menu-item:focus i, .el-menu-item:hover i {
     color: #fff !important;
+  }
+
+  @media (max-width: 340px) {
+    .el-aside.mobile {
+      width: 270px !important;
+    }
   }
 </style>
