@@ -6,6 +6,7 @@ import Psalms from '../views/Psalms.vue';
 import Contact from '../views/Contact.vue';
 import Help from '../views/Help.vue';
 import PsalmDetails from '../views/PsalmDetails.vue';
+import NotFound from '../views/NotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,10 @@ const routes = [
     path: '/help',
     name: 'help',
     component: Help,
+  },
+  {
+    path: '*',
+    component: NotFound,
   },
 ];
 
