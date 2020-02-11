@@ -5,7 +5,7 @@
         <el-card shadow="hover" class="box-card" v-for="psalm in psalms" :key="psalm.id"
           :class="psalm.card_color">
           <div class="psalm-name clearfix">
-            <span>{{ psalm.name }}, s {{ psalm.page_number }}</span>
+            <span>{{ psalm.name }}, s. {{ psalm.page_number }}</span>
             <router-link :to="{ name: 'psalmDetails', params: { psalmID: psalm.id }}">
               <el-button class="open-button" type="warning"
               icon="el-icon-edit" round>Otwórz</el-button>

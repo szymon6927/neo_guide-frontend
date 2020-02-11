@@ -14,7 +14,7 @@
       </el-col>
 
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12">
-        <div class="psalm-recordings">
+        <div class="psalm-recordings" v-if="psalm.recordings.length">
           <h3>Nagrania:</h3>
           <div class="recording" v-for="(recording, index) in psalm.recordings" :key="index">
             <!-- <vue-audio class="audio-player" :file="recording.audio" /> -->
@@ -24,6 +24,10 @@
               Your browser does not support the audio tag.
             </audio>
           </div>
+        </div>
+        <div class="psalm-recordings" v-else>
+          <h3>Nagrania:</h3>
+          <p>Brak nagrań :(</p>
         </div>
       </el-col>
 
@@ -56,6 +60,12 @@ export default {
   // components: {
   //   'vue-audio': VueAudio,
   // },
+  metaInfo() {
+    return {
+      title: this.psalm.name,
+      titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
+    };
+  },
   data() {
     return {
       psalm: this.$store.getters.psalm(this.psalmID),

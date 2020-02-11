@@ -17,7 +17,7 @@
                 <el-row>
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <h2>Błędy / Pomoc / Pytania</h2>
-                    <div>
+                    <div class="break-word">
                       <p>Jeżeli zauważyleś jakieś błędy lub coś nie działa prawidłowo
                         proszę skontaktuj się z nami jak najszybciej, pomoże to zarówno mi
                         w jak najszybszym rozwiązaniu problemu,
@@ -66,6 +66,12 @@ export default {
     NavBar,
     Footer,
     TopBar,
+  },
+  metaInfo() {
+    return {
+      title: 'Pomoc',
+      titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
+    };
   },
 };
 </script>
