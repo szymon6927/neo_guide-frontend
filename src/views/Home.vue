@@ -115,6 +115,12 @@ export default {
     Footer,
     TopBar,
   },
+  metaInfo() {
+    return {
+      title: 'Strona Główna',
+      titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
+    };
+  },
 };
 </script>
 

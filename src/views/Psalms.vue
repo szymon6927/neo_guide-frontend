@@ -35,6 +35,12 @@ export default {
     Psalms,
     TopBar,
   },
+  metaInfo() {
+    return {
+      title: 'Pieśni',
+      titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
+    };
+  },
 };
 </script>
 

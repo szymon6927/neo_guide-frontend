@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import VueAnalytics from 'vue-analytics';
+import VueMeta from 'vue-meta';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -19,6 +20,10 @@ Vue.use(VueAnalytics, {
   id: 'UA-122028664-3',
   router,
 });
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true,
+});
+
 
 new Vue({
   router,

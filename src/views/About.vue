@@ -65,6 +65,12 @@ export default {
     Footer,
     TopBar,
   },
+  metaInfo() {
+    return {
+      title: 'O nas',
+      titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
+    };
+  },
 };
 </script>
 
