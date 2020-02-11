@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 
 import { neoGuideAPI, PSALMS } from '@/api';
+import isMobile from '../utils';
 
 const vuexPersist = new VuexPersist({
   key: 'neoguide-app',
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     psalmsSearchCardColorValue: '',
     psalmsSearchSortingValue: '',
     loading: false,
+    hideMenu: isMobile(),
+    isMobile: isMobile(),
+    isCollapse: false,
   },
   getters: {
     psalms(state) {
@@ -36,6 +40,15 @@ export default new Vuex.Store({
     },
     loading(state) {
       return state.loading;
+    },
+    hideMenu(state) {
+      return state.hideMenu;
+    },
+    isMobile(state) {
+      return state.isMobile;
+    },
+    isCollapse(state) {
+      return state.isCollapse;
     },
   },
   mutations: {
@@ -53,6 +66,15 @@ export default new Vuex.Store({
     },
     SET_LOADING(state, payload) {
       state.loading = payload;
+    },
+    SET_HIDE_MENU(state, payload) {
+      state.hideMenu = payload;
+    },
+    SET_IS_MOBILE(state, payload) {
+      state.isMobile = payload;
+    },
+    SET_IS_COLLAPSE(state, payload) {
+      state.isCollapse = payload;
     },
   },
   actions: {
@@ -84,6 +106,18 @@ export default new Vuex.Store({
 
     loading(context, payload) {
       context.commit('SET_LOADING', payload);
+    },
+
+    hideMenu(context, payload) {
+      context.commit('SET_HIDE_MENU', payload);
+    },
+
+    isMobile(context, payload) {
+      context.commit('SET_IS_MOBILE', payload);
+    },
+
+    isCollapse(context, payload) {
+      context.commit('SET_IS_COLLAPSE', payload);
     },
   },
   modules: {
