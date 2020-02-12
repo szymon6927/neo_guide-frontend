@@ -1,5 +1,5 @@
 <template>
-  <el-header>
+  <el-header v-if="showSearch">
     <el-row>
       <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
         <el-input placeholder="Nazwa pieśni, strona" v-model="search" prefix-icon="el-icon-search"
@@ -7,7 +7,7 @@
       </el-col>
       <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select class="filter" clearable @change="filterPsalms"
-          :disabled="cardFilteringDisabled" v-model="psalmsCardColor" placeholder="Kolor kartki">
+          v-model="psalmsCardColor" placeholder="Kolor kartki">
           <el-option
             v-for="item in cardColorOptions"
             :key="item.value"
@@ -19,7 +19,7 @@
 
       <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select class="filter sorting" clearable @change="filterPsalms"
-          :disabled="sortingDisabled" v-model="psalmsSorting" placeholder="Sortowanie">
+          v-model="psalmsSorting" placeholder="Sortowanie">
           <el-option
             v-for="item in sortingOptions"
             :key="item.value"
@@ -73,8 +73,7 @@ export default {
         value: '-page_number',
         label: 'Po numerze strony (malejąco)',
       }],
-      sortingDisabled: this.isSelectDisabled(),
-      cardFilteringDisabled: this.isSelectDisabled(),
+      showSearch: this.displaySearch(),
     };
   },
   computed: {
@@ -117,8 +116,8 @@ export default {
       this.psalmsSorting = '';
       this.$store.dispatch('getFilteredPsalms');
     },
-    isSelectDisabled() {
-      return this.$route.name !== 'psalms';
+    displaySearch() {
+      return this.$route.name === 'psalms';
     },
   },
 };
