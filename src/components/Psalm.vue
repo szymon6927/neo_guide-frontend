@@ -44,6 +44,21 @@
               </el-image>
             </div>
           </div>
+
+          <div class="other-psalm-images" v-if="psalm.images.length">
+            <div class="demo-image__error"
+              v-for="(psalm_image, index) in psalm.images" :key="index">
+              <div class="block" :class="{'no-image': !psalm_image.image}">
+                <el-image :src="psalm_image.image" :preview-src-list="[psalm_image.image]">
+                  <div slot="error" class="image-slot">
+                    <i class="el-icon-picture-outline"></i>
+                    <div>Brak zdjęcia</div>
+                  </div>
+                </el-image>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </el-col>
