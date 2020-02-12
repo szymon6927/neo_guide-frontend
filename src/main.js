@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import VueAnalytics from 'vue-analytics';
 import VueMeta from 'vue-meta';
+import VuePageTransition from 'vue-page-transition';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -23,6 +24,7 @@ Vue.use(VueAnalytics, {
 Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,
 });
+Vue.use(VuePageTransition);
 
 
 new Vue({

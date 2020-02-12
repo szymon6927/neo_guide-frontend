@@ -1,5 +1,5 @@
 <template>
-  <div class="top-bar">
+  <div class="top-bar" v-bind:class="{sticky: isSticky}">
     <div class="open-close-menu">
       <i class="el-icon-s-fold" @click="handleMenu"></i>
     </div>
@@ -18,6 +18,15 @@ export default {
     ...mapState(['isCollapse']),
     ...mapGetters(['hideMenu', 'isMobile', 'isCollapse']),
   },
+  data() {
+    return {
+      isSticky: false,
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.checkSticky);
+    this.checkSticky();
+  },
   methods: {
     goBack() {
       this.$router.back();
@@ -29,6 +38,13 @@ export default {
         this.$store.commit('SET_IS_COLLAPSE', !this.isCollapse);
       }
     },
+    checkSticky() {
+      if (window.scrollY > 65) {
+        this.isSticky = true;
+      } else {
+        this.isSticky = false;
+      }
+    },
   },
 };
 </script>
@@ -38,6 +54,12 @@ export default {
     padding: 1rem;
     background: #fafafa;
     border-bottom: 1px solid #EBEEF5;
+  }
+
+  .top-bar.sticky {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
   }
 
   .top-bar .open-close-menu {

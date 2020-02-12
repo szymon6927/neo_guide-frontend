@@ -1,6 +1,8 @@
 <template>
   <div id="app" v-loading="loading">
-    <router-view/>
+    <vue-page-transition name="fade">
+      <router-view />
+    </vue-page-transition>
     <MenuOverlay />
   </div>
 </template>
