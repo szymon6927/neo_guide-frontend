@@ -131,9 +131,27 @@ export default {
     color: #fff !important;
   }
 
-  @media (max-width: 340px) {
+  @media (max-width: 400px) {
     .el-aside.mobile {
       width: 270px !important;
+    }
+
+    .main-logo {
+      width: 115px;
+      margin-top: 1rem;
+    }
+
+    .app-name {
+      margin: 20px 0 10px 0;
+    }
+
+    .hide-menu {
+      margin-top: 1rem;
+    }
+
+    .el-menu-item {
+      height: 45px;
+      line-height: 45px;
     }
   }
 </style>

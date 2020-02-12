@@ -6,7 +6,7 @@
           :class="psalm.card_color">
           <div class="psalm-name clearfix">
             <span>{{ psalm.name }}, s. {{ psalm.page_number }}</span>
-            <router-link :to="{ name: 'psalmDetails', params: { psalmID: psalm.id }}">
+            <router-link :to="{ name: 'psalmDetails', params: { psalmID: psalm.id } }">
               <el-button class="open-button" type="warning"
               icon="el-icon-edit" round>Otwórz</el-button>
             </router-link>
