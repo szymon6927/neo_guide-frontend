@@ -61,10 +61,7 @@
                       <h2 class="text-center">Nawigacja</h2>
 
                       <div class="navigation text-center">
-                        <router-link :to="{ name: 'home'}">
-                          <el-button type="warning">Strona Główna</el-button>
-                        </router-link>
-                        <router-link :to="{ name: 'pslams'}">
+                        <router-link :to="{ name: 'psalms'}">
                           <el-button type="warning">Pieśni</el-button>
                         </router-link>
                         <router-link :to="{ name: 'about'}">
