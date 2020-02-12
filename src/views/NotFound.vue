@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <NavBar />
-    <el-container>
+    <el-container v-bind:class="{ noScroll: isMobile && !hideMenu }">
       <el-row class="main-row">
         <el-col :span="24">
           <TopBar name="Brak strony" />
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 import TopBar from '@/components/TopBar.vue';
@@ -49,6 +51,9 @@ export default {
     NavBar,
     Footer,
     TopBar,
+  },
+  computed: {
+    ...mapGetters(['hideMenu', 'isMobile']),
   },
   metaInfo() {
     return {
