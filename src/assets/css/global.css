@@ -48,6 +48,11 @@ h1 {
   word-break: break-word;
 }
 
+.noScroll {
+  position: fixed;
+  overflow: hidden;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */
