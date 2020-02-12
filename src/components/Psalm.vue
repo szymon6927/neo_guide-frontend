@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-row class="psalm-details" :gutter="10">
+    <el-row class="psalm-details" :gutter="10" v-if="psalm">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <div class="psalm-name">
           <h1>{{ psalm.name }}</h1>
@@ -77,9 +77,14 @@ export default {
   // },
   metaInfo() {
     return {
-      title: this.psalm.name,
+      title: ((this.psalm !== undefined) ? this.psalm.name : 'Psalm'),
       titleTemplate: '%s | Neo Guide – Śpiewnik NEO',
     };
+  },
+  created() {
+    if (!this.psalm) {
+      this.$router.push({ name: 'notFound' });
+    }
   },
   data() {
     return {
