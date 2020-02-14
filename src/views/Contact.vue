@@ -16,7 +16,7 @@
               <div class="main-content">
                 <el-row>
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                    <h2>Zapraszamy do kontakt</h2>
+                    <h2>Zapraszamy do kontaktu</h2>
                     <div class="break-word">
                       <p>Jeżli masz jakiekolwiek pytania, propozycje, sugestie
                         lub pomysł na <strong>nowe funkcjonalności</strong> skontaktuj się z nami
