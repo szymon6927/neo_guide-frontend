@@ -20,9 +20,10 @@
                     <div class="break-word">
                       <h2 class="text-center">Autor</h2>
                       <p class="author"><strong>Szymon Miks</strong></p>
+                      <p>Lębork</p>
                       <p>
-                        <span class="name"><strong>Facebook:</strong></span>
-                        <a href="https://www.facebook.com/szymon.miks" target="_blank">https://www.facebook.com/szymon.miks</a>
+                        I wspólnota przy Parafii pw.
+                        Najświętszej Maryi Panny Królowej Polski w Lęborku
                       </p>
                       <p>
                         <span class="name"><strong>GitHub:</strong></span>
@@ -35,6 +36,16 @@
                       <p>
                         <span class="name"><strong>Strona WWW:</strong></span>
                         <a href="https://szymonmiks.pl/" target="_blank">https://szymonmiks.pl/</a>
+                      </p>
+                    </div>
+
+                    <el-divider><i class="el-icon-user-solid"></i></el-divider>
+
+                    <div class="break-word">
+                      <p class="author"><strong>Jacek Dąbrowski</strong></p>
+                      <p>Lębork</p>
+                      <p>
+                        I wspólnota przy Parafii Św. Jakuba Apostoła w Lęborku
                       </p>
                     </div>
                   </el-col>
