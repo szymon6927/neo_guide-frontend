@@ -41,7 +41,7 @@ export default {
     checkSticky() {
       const mainHeight = document.querySelector('main').offsetHeight;
 
-      if ((window.scrollY > 65) && (mainHeight > 1200)) {
+      if ((window.scrollY > 65) && (mainHeight > document.documentElement.clientHeight + 65)) {
         this.isSticky = true;
       } else {
         this.isSticky = false;
