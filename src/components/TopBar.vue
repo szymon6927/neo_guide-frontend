@@ -39,7 +39,9 @@ export default {
       }
     },
     checkSticky() {
-      if (window.scrollY > 65) {
+      const mainHeight = document.querySelector('main').offsetHeight;
+
+      if ((window.scrollY > 65) && (mainHeight > 1200)) {
         this.isSticky = true;
       } else {
         this.isSticky = false;
