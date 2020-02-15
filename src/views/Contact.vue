@@ -18,9 +18,9 @@
                   <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <h2>Zapraszamy do kontaktu</h2>
                     <div class="break-word">
-                      <p>Jeżli masz jakiekolwiek pytania, propozycje, sugestie
-                        lub pomysł na <strong>nowe funkcjonalności</strong> skontaktuj się z nami
-                        mailowo!
+                      <p>
+                        Jeżeli masz jakiekolwiek pytania, propozycje, sugestie lub pomysły na
+                        <strong>nowe funkcjonalności</strong>, skontaktuj się z nami mailowo!
                       </p>
                       <p>
                         <span class="name"><strong>E-mail:</strong></span>
