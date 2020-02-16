@@ -3,7 +3,8 @@
     <el-row>
       <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
         <el-input placeholder="Nazwa pieśni, strona" v-model="search" prefix-icon="el-icon-search"
-          v-on:input="filterPsalms" class="psalms-search"></el-input>
+          v-on:input="filterPsalms" class="psalms-search"
+          v-bind:class="{sticky: isSticky, mobile: isMobile}"></el-input>
       </el-col>
       <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select class="filter" clearable @change="filterPsalms"
@@ -38,6 +39,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import _ from 'lodash';
 
 export default {
@@ -74,9 +76,11 @@ export default {
         label: 'Po numerze strony (malejąco)',
       }],
       showSearch: this.displaySearch(),
+      isSticky: false,
     };
   },
   computed: {
+    ...mapGetters(['isMobile']),
     search: {
       get() {
         return this.$store.state.psalmsSearchValue;
@@ -102,6 +106,10 @@ export default {
       },
     },
   },
+  mounted() {
+    window.addEventListener('scroll', this.checkSticky);
+    this.checkSticky();
+  },
   methods: {
     filterPsalms: _.debounce(function () {
       this.$store.dispatch('getFilteredPsalms');
@@ -118,6 +126,15 @@ export default {
     },
     displaySearch() {
       return this.$route.name === 'psalms';
+    },
+    checkSticky() {
+      const mainHeight = document.querySelector('main').offsetHeight;
+
+      if ((window.scrollY > 65) && (mainHeight > document.documentElement.clientHeight + 65)) {
+        this.isSticky = true;
+      } else {
+        this.isSticky = false;
+      }
     },
   },
 };
@@ -154,9 +171,26 @@ export default {
     color: #e6a23d;
   }
 
+  .psalms-search.mobile.sticky {
+    position: fixed;
+    width: 97%;
+    z-index: 999;
+    background: #fafafa;
+    top: 57px;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid #EBEEF5;
+    left: -10px;
+  }
+
   @media (max-width: 768px) {
     .filter {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .psalms-search.mobile.sticky {
+      width: 95%;
     }
   }
 </style>

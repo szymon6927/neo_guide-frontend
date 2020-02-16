@@ -53,6 +53,14 @@ h1 {
   overflow: hidden;
 }
 
+.psalms-search.mobile.sticky .el-input__inner {
+  height: 30px;
+}
+
+.psalms-search.mobile.sticky .el-input__prefix {
+  left: 25px;
+}
+
 /* .audio-player a {
   padding: 0 10px !important;
 } */
