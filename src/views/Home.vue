@@ -27,7 +27,7 @@
                     <p>
                       Aplikacja <strong>Neo Guide</strong>, powstała jako pomoc dla członków
                       oraz kantorów wspólnot <strong>neokatechumenalnych</strong>
-                      i ma być wersją online śpiewnika <strong>"Zmartwychwsał Pan 2018"</strong>
+                      i ma być wersją online śpiewnika <strong>"Zmartwychwstał Pan 2018"</strong>
                     </p>
 
                     <div>
