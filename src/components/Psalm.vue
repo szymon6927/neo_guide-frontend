@@ -19,7 +19,7 @@
           <div class="recording" v-for="(recording, index) in psalm.recordings" :key="index">
             <!-- <vue-audio class="audio-player" :file="recording.audio" /> -->
             <div>#{{ index + 1 }}</div>
-            <audio class="audio-player" controls>
+            <audio class="audio-player" controls controlsList="nodownload">
               <source :src="recording.audio" type="audio/mpeg">
               Your browser does not support the audio tag.
             </audio>

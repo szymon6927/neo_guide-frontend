@@ -21,11 +21,11 @@ h1 {
 }
 
 .el-card.yellow {
-  background-color: #fefe90;
+  background-color: #fff310;
 }
 
 .el-card.green {
-  background-color: #5cfe74;
+  background-color: #77dd86;
 }
 
 .el-card.grey {
@@ -33,7 +33,7 @@ h1 {
 }
 
 .el-card.blue {
-  background-color: #66efff;
+  background-color: #62c3fc;
 }
 
 .el-image-viewer__close {
