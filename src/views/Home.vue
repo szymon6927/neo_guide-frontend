@@ -50,6 +50,13 @@
                     <div>
                       <p>Planowane są również inne funkcjonalności, ale o tym w przyszłości :)</p>
                     </div>
+
+                    <div>
+                      <p>
+                        <strong>Niektóre nagrania zostały wykonane przez nas
+                          i nie są one jako wzór do nauki, ale jako pomoc!</strong>
+                      </p>
+                    </div>
                   </el-col>
                 </el-row>
 
