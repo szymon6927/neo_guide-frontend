@@ -7,8 +7,8 @@
           <div class="psalm-name clearfix">
             <span>{{ psalm.name }}, s. {{ psalm.page_number }}</span>
             <router-link :to="{ name: 'psalmDetails', params: { psalmID: psalm.id } }">
-              <el-button class="open-button" type="warning"
-              icon="el-icon-edit" round>Otwórz</el-button>
+              <el-button class="open-button" type="default"
+              icon="el-icon-view" round>Podgląd</el-button>
             </router-link>
           </div>
         </el-card>
@@ -44,6 +44,16 @@ export default {
 
   .psalm-name {
     text-align: left;
+  }
+
+  .el-button {
+    color: #000;
+  }
+
+  .el-button:focus, .el-button:hover {
+    color: #fff;
+    background-color: #e6a23c;
+    border-color: #e6a23c;
   }
 
   @media (max-width: 768px) {
