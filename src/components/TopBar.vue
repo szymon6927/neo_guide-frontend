@@ -3,8 +3,12 @@
     <div class="open-close-menu">
       <i class="el-icon-s-fold" @click="handleMenu"></i>
     </div>
-    <el-page-header class="top-bar-header" @back="goBack" title="wstecz"
-      :content=name></el-page-header>
+    <el-page-header
+      class="top-bar-header"
+      title="wstecz"
+      @back="goBack"
+      :content=name>
+    </el-page-header>
   </div>
 </template>
 

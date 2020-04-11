@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Psalms from '../views/Psalms.vue';
@@ -7,8 +8,11 @@ import Contact from '../views/Contact.vue';
 import Help from '../views/Help.vue';
 import PsalmDetails from '../views/PsalmDetails.vue';
 import NotFound from '../views/NotFound.vue';
+import Login from '../views/auth/Login.vue';
 
 import store from '../store/index';
+
+import { hasToken } from '../utils';
 
 Vue.use(VueRouter);
 
@@ -45,6 +49,11 @@ const routes = [
     component: Help,
   },
   {
+    path: '/login',
+    name: 'login',
+    component: Login,
+  },
+  {
     path: '*',
     name: 'notFound',
     component: NotFound,
@@ -71,6 +80,18 @@ const router = new VueRouter({
       y: 0,
     };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/about', '/contact', '/help'];
+  const authRequired = !publicPages.includes(to.path);
+  const isLoggedIn = hasToken();
+
+  if (authRequired && !isLoggedIn) {
+    next('/login');
+  } else {
+    next();
+  }
 });
 
 router.afterEach(() => {

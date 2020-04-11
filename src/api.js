@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 function checkIfIsDevelopment() {
-  return window.location.hostname === 'localhost';
+  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 }
 
 function getBaseURL(isInDevelopmentMode) {

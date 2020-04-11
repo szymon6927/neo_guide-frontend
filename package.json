@@ -49,7 +49,9 @@
       "plugin:vue/essential",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "import/prefer-default-export": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     },

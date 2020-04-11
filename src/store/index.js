@@ -3,7 +3,10 @@ import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 
 import { neoGuideAPI, PSALMS } from '@/api';
-import isMobile from '../utils';
+import { userModule } from './user.module';
+import { alertModule } from './alert.module';
+
+import { isMobile } from '../utils';
 
 const vuexPersist = new VuexPersist({
   key: 'neoguide-app',
@@ -121,5 +124,7 @@ export default new Vuex.Store({
     },
   },
   modules: {
+    userModule,
+    alertModule,
   },
 });
