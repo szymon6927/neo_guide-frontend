@@ -10,9 +10,9 @@ import PsalmDetails from '../views/PsalmDetails.vue';
 import NotFound from '../views/NotFound.vue';
 import Login from '../views/auth/Login.vue';
 
-import store from '../store/index';
+import store from '../store';
 
-import { hasToken } from '../utils';
+import { TokenService } from '../services/token.service';
 
 Vue.use(VueRouter);
 
@@ -85,9 +85,9 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/about', '/contact', '/help'];
   const authRequired = !publicPages.includes(to.path);
-  const isLoggedIn = hasToken();
 
-  if (authRequired && !isLoggedIn) {
+  if (authRequired && !TokenService.isAuthenticated()) {
+    store.dispatch('userModule/logout');
     next('/login');
   } else {
     next();
@@ -96,7 +96,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
   if (store.state.isMobile) {
-    store.commit('SET_HIDE_MENU', true);
+    store.dispatch('hideMenu', true);
   }
 });
 
