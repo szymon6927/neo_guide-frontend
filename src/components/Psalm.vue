@@ -14,10 +14,9 @@
       </el-col>
 
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12">
-        <div class="psalm-recordings" v-if="psalm.recordings.length">
+        <div class="psalm-recordings" v-if="psalm.recordings && psalm.recordings.length">
           <h3>Nagrania:</h3>
           <div class="recording" v-for="(recording, index) in psalm.recordings" :key="index">
-            <!-- <vue-audio class="audio-player" :file="recording.audio" /> -->
             <div>#{{ index + 1 }}</div>
             <audio class="audio-player" controls controlsList="nodownload">
               <source :src="recording.audio" type="audio/mpeg">
@@ -45,7 +44,7 @@
             </div>
           </div>
 
-          <div class="other-psalm-images" v-if="psalm.images.length">
+          <div class="other-psalm-images" v-if="psalm.images && psalm.images.length">
             <div class="demo-image__error"
               v-for="(psalm_image, index) in psalm.images" :key="index">
               <div class="block" :class="{'no-image': !psalm_image.image}">
@@ -67,14 +66,14 @@
 </template>
 
 <script>
-// import VueAudio from 'vue-audio';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Psalm',
   props: ['psalmID'],
-  // components: {
-  //   'vue-audio': VueAudio,
-  // },
+  computed: {
+    ...mapState('psalmsModule', ['psalm']),
+  },
   metaInfo() {
     return {
       title: ((this.psalm !== undefined) ? this.psalm.name : 'Psalm'),
@@ -82,14 +81,14 @@ export default {
     };
   },
   created() {
+    this.getSinglePsalm(this.psalmID);
+
     if (!this.psalm) {
       this.$router.push({ name: 'notFound' });
     }
   },
-  data() {
-    return {
-      psalm: this.$store.getters.psalm(this.psalmID),
-    };
+  methods: {
+    ...mapActions('psalmsModule', { getSinglePsalm: 'getSinglePsalm' }),
   },
 };
 </script>
