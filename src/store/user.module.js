@@ -1,12 +1,12 @@
 import UserService from '../services/user.service';
-import { hasToken } from '../utils';
+import { TokenService } from '../services/token.service';
 import { LOGIN_LITERALS } from '../literals/auth';
 
 export const userModule = {
   namespaced: true,
 
   state: {
-    isLoggedIn: hasToken(),
+    isLoggedIn: TokenService.isAuthenticated(),
   },
 
   getters: {
@@ -24,7 +24,6 @@ export const userModule = {
   actions: {
     async login({ dispatch, commit }, { email, password }) {
       const result = await UserService.login(email, password);
-      console.log('result: ', result);
 
       if (!result) {
         dispatch('alertModule/error', LOGIN_LITERALS.LOGIN_ERROR, { root: true });
