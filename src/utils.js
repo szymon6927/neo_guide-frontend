@@ -6,8 +6,10 @@ export function isMobile() {
   return false;
 }
 
-export function hasToken() {
-  const token = localStorage.getItem('userToken');
+export function getBaseURL() {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://127.0.0.1:8000/api/v1/';
+  }
 
-  return token !== null;
+  return 'https://api.neoguide.pl/api/v1/';
 }
