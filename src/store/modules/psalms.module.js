@@ -1,4 +1,4 @@
-import PsalmsService from '../services/psalms.service';
+import PsalmsService from '../../services/psalms.service';
 
 export const psalmsModule = {
   namespaced: true,

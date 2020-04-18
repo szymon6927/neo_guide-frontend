@@ -1,6 +1,6 @@
-import UserService from '../services/user.service';
-import { TokenService } from '../services/token.service';
-import { LOGIN_LITERALS } from '../literals/auth';
+import UserService from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
+import { LOGIN_LITERALS } from '../../literals/auth';
 
 export const userModule = {
   namespaced: true,

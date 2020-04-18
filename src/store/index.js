@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 
-import { alertModule } from './alert.module';
-import { psalmsModule } from './psalms.module';
-import { userModule } from './user.module';
+import { alertModule } from './modules/alert.module';
+import { psalmsModule } from './modules/psalms.module';
+import { userModule } from './modules/user.module';
 
 import { isMobile } from '../utils';
 
