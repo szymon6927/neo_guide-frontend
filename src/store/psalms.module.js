@@ -35,17 +35,23 @@ export const psalmsModule = {
       const allPsalms = await PsalmsService.getAllPsalms();
       commit('SET_PSALMS', allPsalms);
 
+      if (allPsalms === null) {
+        dispatch('userModule/logout', null, { root: true });
+      }
+
       dispatch('loading', false, { root: true });
     },
 
     async getSinglePsalm({ dispatch, commit }, psalmID) {
-      console.log('psalmId: ', psalmID);
-
       // const psalm = state.psalms.filter(p => p.id === Number(id))[0];
       dispatch('loading', true, { root: true });
 
       const psalm = await PsalmsService.getPsalm(psalmID);
       commit('SET_PSALM', psalm);
+
+      if (psalm === null) {
+        dispatch('userModule/logout', null, { root: true });
+      }
 
       dispatch('loading', false, { root: true });
     },
@@ -55,6 +61,10 @@ export const psalmsModule = {
 
       const filteredPsalms = await PsalmsService.getFilteredPsalms(filterValues);
       commit('SET_PSALMS', filteredPsalms);
+
+      if (filteredPsalms === null) {
+        dispatch('userModule/logout', null, { root: true });
+      }
 
       dispatch('loading', false, { root: true });
     },

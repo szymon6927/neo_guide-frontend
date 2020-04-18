@@ -10,7 +10,7 @@ export class TokenService {
     return this.getToken() !== null;
   }
 
-  static getAuthentication() {
+  static getAuthenticationHeader() {
     return {
       headers: { Authorization: `Bearer ${this.getToken()}` },
     };
