@@ -40,15 +40,15 @@ export default class PsalmsService {
   }
 
   static async getFilteredPsalms(filterValues) {
-    let url = `psalms/?search=${filterValues.psalmsSearchValue}`;
+    let url = `psalms/?search=${filterValues.searchText}`;
     const header = TokenService.getAuthenticationHeader();
 
-    if (filterValues.psalmsSearchCardColorValue !== '') {
-      url += `&card_color=${filterValues.psalmsSearchCardColorValue}`;
+    if (filterValues.searchCardColor !== '') {
+      url += `&card_color=${filterValues.searchCardColor}`;
     }
 
-    if (filterValues.psalmsSearchSortingValue !== '') {
-      url += `&ordering=${filterValues.psalmsSearchSortingValue}`;
+    if (filterValues.searchSorting !== '') {
+      url += `&ordering=${filterValues.searchSorting}`;
     }
 
     try {

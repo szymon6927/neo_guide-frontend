@@ -2,15 +2,24 @@
   <el-header v-if="showSearch">
     <el-row>
       <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-        <el-input placeholder="Nazwa pieśni, strona" v-model="search" prefix-icon="el-icon-search"
-          v-on:input="filterPsalms" class="psalms-search"
-          v-bind:class="{sticky: isSticky, mobile: isMobile}"></el-input>
+        <el-input
+          placeholder="Nazwa pieśni, strona"
+          prefix-icon="el-icon-search"
+          class="psalms-search"
+          v-model="search.text"
+          @keyup.enter.native="searchPsalms"
+          v-bind:class="{sticky: isSticky, mobile: isMobile}">
+        </el-input>
       </el-col>
+
       <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
-        <el-select class="filter" clearable @change="filterPsalms"
-          v-model="psalmsCardColor" placeholder="Kolor kartki">
+        <el-select
+          class="filter"
+          placeholder="Kolor kartki"
+          clearable
+          v-model="search.cardColor">
           <el-option
-            v-for="item in cardColorOptions"
+            v-for="item in search.cardColorOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -19,10 +28,13 @@
       </el-col>
 
       <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
-        <el-select class="filter sorting" clearable @change="filterPsalms"
-          v-model="psalmsSorting" placeholder="Sortowanie">
+        <el-select
+          class="filter sorting"
+          placeholder="Sortowanie"
+          clearable
+          v-model="search.sorting">
           <el-option
-            v-for="item in sortingOptions"
+            v-for="item in search.sortingOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -31,98 +43,88 @@
       </el-col>
 
       <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
-        <el-button type="warning" class="clear-filters" round
+        <el-button type="warning" class="search" round
+          @click="searchPsalms">Szukaj</el-button>
+      </el-col>
+
+      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
+        <el-button type="info" class="clear-filters" round
           @click="clearFilters">Wyczyść</el-button>
       </el-col>
+
     </el-row>
   </el-header>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import _ from 'lodash';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Search',
   data() {
     return {
-      cardColorOptions: [{
-        value: 'white',
-        label: 'biały',
-      }, {
-        value: 'yellow',
-        label: 'żółty',
-      }, {
-        value: 'grey',
-        label: 'szary',
-      }, {
-        value: 'green',
-        label: 'zielony',
-      }, {
-        value: 'blue',
-        label: 'niebieski',
-      }],
-      sortingOptions: [{
-        value: 'name',
-        label: 'Po nazwie (rosnąco)',
-      }, {
-        value: '-name',
-        label: 'Po nazwie (malejąco)',
-      }, {
-        value: 'page_number',
-        label: 'Po numerze strony (rosnąco)',
-      }, {
-        value: '-page_number',
-        label: 'Po numerze strony (malejąco)',
-      }],
+      search: {
+        text: '',
+        cardColor: '',
+        sorting: '',
+        cardColorOptions: [{
+          value: 'white',
+          label: 'biały',
+        }, {
+          value: 'yellow',
+          label: 'żółty',
+        }, {
+          value: 'grey',
+          label: 'szary',
+        }, {
+          value: 'green',
+          label: 'zielony',
+        }, {
+          value: 'blue',
+          label: 'niebieski',
+        }],
+        sortingOptions: [{
+          value: 'name',
+          label: 'Po nazwie (rosnąco)',
+        }, {
+          value: '-name',
+          label: 'Po nazwie (malejąco)',
+        }, {
+          value: 'page_number',
+          label: 'Po numerze strony (rosnąco)',
+        }, {
+          value: '-page_number',
+          label: 'Po numerze strony (malejąco)',
+        }],
+      },
       showSearch: this.displaySearch(),
       isSticky: false,
     };
   },
   computed: {
     ...mapGetters(['isMobile']),
-    search: {
-      get() {
-        return this.$store.state.psalmsSearchValue;
-      },
-      set(value) {
-        this.$store.commit('SET_PSALMS_SEARCH_VALUE', value);
-      },
-    },
-    psalmsCardColor: {
-      get() {
-        return this.$store.state.psalmsSearchCardColorValue;
-      },
-      set(value) {
-        this.$store.commit('SET_PSALMS_SEARCH_CARD_COLOR_VALUE', value);
-      },
-    },
-    psalmsSorting: {
-      get() {
-        return this.$store.state.psalmsSearchSortingValue;
-      },
-      set(value) {
-        this.$store.commit('SET_PSALMS_SEARCH_SORTING_VALUE', value);
-      },
-    },
   },
   mounted() {
     window.addEventListener('scroll', this.checkSticky);
     this.checkSticky();
   },
   methods: {
-    filterPsalms: _.debounce(function () {
-      this.$store.dispatch('getFilteredPsalms');
-
-      if (this.$route.name !== 'psalms') {
-        this.$router.push({ name: 'psalms' });
-      }
-    }, 500),
+    ...mapActions('psalmsModule', { getFilteredPsalms: 'getFilteredPsalms' }),
     clearFilters() {
-      this.search = '';
-      this.psalmsCardColor = '';
-      this.psalmsSorting = '';
-      this.$store.dispatch('getFilteredPsalms');
+      this.search.text = '';
+      this.search.cardColor = '';
+      this.search.sorting = '';
+
+      this.searchPsalms();
+    },
+    searchPsalms() {
+      const filterValues = {
+        searchText: this.search.text,
+        searchCardColor: this.search.cardColor,
+        searchSorting: this.search.sorting,
+      };
+
+      this.getFilteredPsalms(filterValues);
     },
     displaySearch() {
       return this.$route.name === 'psalms';
@@ -151,7 +153,7 @@ export default {
     padding: 1rem 0;
   }
 
-  .clear-filters {
+  .clear-filters, .search {
     margin: 1rem 0;
   }
 
