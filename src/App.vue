@@ -18,18 +18,27 @@ export default {
     MenuOverlay,
   },
   computed: {
-    ...mapState(['loading']),
-  },
-  created() {
-    // this.$store.dispatch('getPsalms');
+    ...mapState(['loading', 'isMobile']),
+    ...mapState('userModule', ['isLoggedIn']),
   },
   methods: {
     ...mapActions('alertModule', { clearAlerts: 'clear' }),
+    ...mapActions(['hideMenu']),
   },
   watch: {
     $route() {
       // clear alert on location change
       this.clearAlerts();
+
+      if (this.isMobile) {
+        this.hideMenu(true);
+      }
+    },
+    isLoggedIn(newValue, oldValue) {
+      // if users is logging out redirect him to the login page
+      if (newValue === false && oldValue === true && this.$router.currentRoute.name !== 'login') {
+        this.$router.push('/login');
+      }
     },
   },
 };

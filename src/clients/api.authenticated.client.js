@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+import { Promise } from 'es6-promise';
 import { TokenService } from '../services/token.service';
 import { getBaseURL } from '../utils';
+
 
 const BASE_URL = getBaseURL();
 
@@ -19,7 +21,7 @@ neoGuideAuthenticatedAPI.interceptors.response.use((response) => {
   }
 
   if (error.config.url.includes('token/refresh/')) {
-    console.log('Error with token');
+    console.error('Error with token.');
     TokenService.clear();
 
     return Promise.reject(error);
@@ -40,7 +42,8 @@ neoGuideAuthenticatedAPI.interceptors.response.use((response) => {
       });
     })
     .catch((err) => {
+      console.error('Error while trying to fetch new token.');
       TokenService.clear();
-      Promise.reject(err);
+      return Promise.reject(err);
     });
 });
