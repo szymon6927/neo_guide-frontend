@@ -9,6 +9,7 @@ import Help from '../views/Help.vue';
 import PsalmDetails from '../views/PsalmDetails.vue';
 import NotFound from '../views/NotFound.vue';
 import Login from '../views/auth/Login.vue';
+import Profile from '../views/Profile.vue';
 
 import { TokenService } from '../services/token.service';
 
@@ -50,6 +51,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile,
   },
   {
     path: '*',

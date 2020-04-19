@@ -15,6 +15,7 @@ const vuexPersist = new VuexPersist({
     psalms: state.psalmsModule.psalms,
     psalm: state.psalmsModule.psalm,
     isLoggedIn: state.userModule.isLoggedIn,
+    users: state.userModule.user,
   }),
 });
 

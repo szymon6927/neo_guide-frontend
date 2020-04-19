@@ -13,3 +13,7 @@ export function getBaseURL() {
 
   return 'https://api.neoguide.pl/api/v1/';
 }
+
+export function isEmptyObject(obj) {
+  return Object.keys(obj).length === 0;
+}
