@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Psalms from '../views/Psalms.vue';
-import Contact from '../views/Contact.vue';
-import Help from '../views/Help.vue';
-import PsalmDetails from '../views/PsalmDetails.vue';
-import NotFound from '../views/NotFound.vue';
-import Login from '../views/auth/Login.vue';
-import Profile from '../views/Profile.vue';
+import HomeView from '../views/Home.vue';
+import AboutView from '../views/About.vue';
+import PsalmsView from '../views/Psalms.vue';
+import ContactView from '../views/Contact.vue';
+import HelpView from '../views/Help.vue';
+import PsalmDetailsView from '../views/PsalmDetails.vue';
+import NotFoundView from '../views/NotFound.vue';
+import LoginView from '../views/auth/Login.vue';
+import ProfileView from '../views/Profile.vue';
 
 import { TokenService } from '../services/token.service';
 
@@ -19,48 +19,48 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: HomeView,
   },
   {
     path: '/about',
     name: 'about',
-    component: About,
+    component: AboutView,
   },
   {
     path: '/psalms',
     name: 'psalms',
-    component: Psalms,
+    component: PsalmsView,
   },
   {
     path: '/psalm/:psalmID/details',
     name: 'psalmDetails',
-    component: PsalmDetails,
+    component: PsalmDetailsView,
     props: true,
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact,
+    component: ContactView,
   },
   {
     path: '/help',
     name: 'help',
-    component: Help,
+    component: HelpView,
   },
   {
     path: '/login',
     name: 'login',
-    component: Login,
+    component: LoginView,
   },
   {
     path: '/profile',
     name: 'profile',
-    component: Profile,
+    component: ProfileView,
   },
   {
     path: '*',
     name: 'notFound',
-    component: NotFound,
+    component: NotFoundView,
   },
 ];
 

@@ -43,7 +43,7 @@ import NavBar from '@/components/NavBar.vue';
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  name: 'home',
+  name: 'LoginView',
   components: {
     Footer,
     Login,
