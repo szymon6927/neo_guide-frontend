@@ -61,6 +61,36 @@ h1 {
   left: 25px;
 }
 
-/* .audio-player a {
-  padding: 0 10px !important;
-} */
+.logout button span {
+  font-size: 12px;
+}
+
+.top-bar.mobile .el-page-header__content {
+    font-size: 14px;
+}
+
+.top-bar.mobile .el-page-header__left {
+  margin-right: 20px;
+}
+
+.top-bar.mobile .el-page-header__left .el-icon-back {
+  font-size: 15px;
+}
+
+.top-bar.mobile .el-page-header__title {
+  font-size: 10px;
+}
+
+.top-bar.mobile .el-page-header__left::after {
+  right: -10px;
+}
+
+.top-bar.mobile .logout button span {
+  margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+  .logout button span {
+    margin-left: 0 !important;
+  }
+}

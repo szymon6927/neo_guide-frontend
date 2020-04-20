@@ -178,7 +178,7 @@ export default {
     width: 97%;
     z-index: 999;
     background: #fafafa;
-    top: 57px;
+    top: 53px;
     padding: 10px 20px 10px 20px;
     border-bottom: 1px solid #EBEEF5;
     left: -10px;

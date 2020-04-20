@@ -53,11 +53,6 @@
             <i class="el-icon-user-solid"></i>
             <span>Profil</span>
           </el-menu-item>
-
-          <el-menu-item @click="logout" class="sub-menu-item" index="/login">
-            <i class="el-icon-s-unfold"></i>
-            <span>Wyloguj się</span>
-          </el-menu-item>
         </el-submenu>
 
       </el-menu>
