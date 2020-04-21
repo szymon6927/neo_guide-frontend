@@ -1,6 +1,6 @@
 <template>
   <div class="profile-form" v-if="user">
-    <el-form ref="form" :model="user" label-width="120px">
+    <el-form ref="form" :model="user" :label-position="labelPosition" label-width="120px">
       <el-form-item label="Imię:">
         <el-input v-model="user.first_name"></el-input>
       </el-form-item>
@@ -36,10 +36,12 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import { labelFormPositionMixin } from '../mixins/labelFromPositionMixin';
 import Alert from './Alert.vue';
 
 export default {
   name: 'Profile',
+  mixins: [labelFormPositionMixin],
   components: {
     Alert,
   },

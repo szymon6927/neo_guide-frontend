@@ -28,10 +28,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import { labelFormPositionMixin } from '../../mixins/labelFromPositionMixin';
 import Alert from '../Alert.vue';
 
 export default {
   name: 'Login',
+  mixins: [labelFormPositionMixin],
   components: {
     Alert,
   },
@@ -40,10 +42,10 @@ export default {
     ...mapState({
       alert: state => state.alertModule,
     }),
+    ...mapState(['isMobile']),
   },
   data() {
     return {
-      labelPosition: 'right',
       loginForm: {
         email: '',
         password: '',

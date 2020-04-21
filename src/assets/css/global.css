@@ -89,6 +89,11 @@ h1 {
   margin-left: 0;
 }
 
+.el-form--label-top .el-form-item__label {
+    float: left;
+    padding: 0;
+}
+
 @media (max-width: 1024px) {
   .logout button span {
     margin-left: 0 !important;
