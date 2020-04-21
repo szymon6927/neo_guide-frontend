@@ -64,7 +64,7 @@ import Footer from '@/components/Footer.vue';
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  name: 'home',
+  name: 'HelpView',
   components: {
     NavBar,
     Footer,

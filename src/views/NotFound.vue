@@ -46,7 +46,7 @@ import Footer from '@/components/Footer.vue';
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  name: 'NotFound',
+  name: 'NotFoundView',
   components: {
     NavBar,
     Footer,

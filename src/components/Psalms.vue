@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <el-row>
-      <el-col :span="24" v-if="psalms.length">
+      <el-col :span="24" v-if="psalms && psalms.length">
         <el-card shadow="hover" class="box-card" v-for="psalm in psalms" :key="psalm.id"
           :class="psalm.card_color">
           <div class="psalm-name clearfix">
@@ -21,13 +21,18 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Psalms',
   computed: {
-    ...mapState(['psalms']),
-    ...mapGetters(['psalms']),
+    ...mapState('psalmsModule', ['psalms']),
+  },
+  created() {
+    this.getAllPsalms();
+  },
+  methods: {
+    ...mapActions('psalmsModule', { getAllPsalms: 'getAllPsalms' }),
   },
 };
 </script>

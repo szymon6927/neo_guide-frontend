@@ -29,7 +29,7 @@ import Psalms from '@/components/Psalms.vue';
 import TopBar from '@/components/TopBar.vue';
 
 export default {
-  name: 'home',
+  name: 'PsalmsView',
   components: {
     NavBar,
     Search,

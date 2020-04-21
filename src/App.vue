@@ -1,14 +1,16 @@
 <template>
   <div id="app" v-loading="loading">
+
     <vue-page-transition name="fade">
       <router-view />
     </vue-page-transition>
+
     <MenuOverlay />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import MenuOverlay from '@/components/MenuOverlay.vue';
 
 export default {
@@ -16,17 +18,26 @@ export default {
     MenuOverlay,
   },
   computed: {
-    ...mapState(['loading', 'hideMenu', 'isMobile']),
-  },
-  created() {
-    this.$store.dispatch('getPsalms');
+    ...mapState(['loading', 'isMobile']),
+    ...mapState('userModule', ['isLoggedIn']),
   },
   methods: {
-    toggleCollapse() {
-      if (!this.isMobile) {
-        this.$store.commit('SET_IS_COLLAPSE', !this.isCollapse);
-      } else {
-        this.$store.commit('SET_HIDE_MENU', !this.hideMenu);
+    ...mapActions('alertModule', { clearAlerts: 'clear' }),
+    ...mapActions(['hideMenu']),
+  },
+  watch: {
+    $route() {
+      // clear alert on location change
+      this.clearAlerts();
+
+      if (this.isMobile) {
+        this.hideMenu(true);
+      }
+    },
+    isLoggedIn(newValue, oldValue) {
+      // if users is logging out redirect him to the login page
+      if (newValue === false && oldValue === true && this.$router.currentRoute.name !== 'login') {
+        this.$router.push('/login');
       }
     },
   },
