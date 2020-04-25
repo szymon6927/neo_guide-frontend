@@ -1,22 +1,26 @@
 <template>
-  <el-header v-if="showSearch">
-    <el-row>
-      <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
+  <el-header class="search-wrapper" v-if="showSearch">
+    <div class="search-bar">
+      <div class="filters">
         <el-input
+          class="filter text"
           placeholder="Nazwa pieśni, strona"
           prefix-icon="el-icon-search"
-          class="psalms-search"
+          :size="inputAndSelectSize"
           v-model="search.text"
           @keyup.enter.native="searchPsalms"
           v-bind:class="{sticky: isSticky, mobile: isMobile}">
         </el-input>
-      </el-col>
 
-      <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select
           class="filter"
           placeholder="Kolor kartki"
           clearable
+          multiple
+          filterable
+          collapse-tags
+          :size="inputAndSelectSize"
+          :no-match-text="search.noMatchSelectText"
           v-model="search.cardColor">
           <el-option
             v-for="item in search.cardColorOptions"
@@ -25,13 +29,30 @@
             :value="item.value">
           </el-option>
         </el-select>
-      </el-col>
 
-      <el-col :xs="24" :sm="12" :md="10" :lg="6" :xl="4">
         <el-select
-          class="filter sorting"
+          class="filter"
+          placeholder="Okres liturgiczny"
+          clearable
+          multiple
+          filterable
+          collapse-tags
+          :size="inputAndSelectSize"
+          :no-match-text="search.noMatchSelectText"
+          v-model="search.liturgicalPeriod">
+          <el-option
+            v-for="item in search.liturgicalPeriodOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+
+        <el-select
+          class="filter sort"
           placeholder="Sortowanie"
           clearable
+          :size="inputAndSelectSize"
           v-model="search.sorting">
           <el-option
             v-for="item in search.sortingOptions"
@@ -40,19 +61,62 @@
             :value="item.value">
           </el-option>
         </el-select>
-      </el-col>
 
-      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
-        <el-button type="warning" class="search" round
-          @click="searchPsalms">Szukaj</el-button>
-      </el-col>
+        <el-select
+          class="filter type"
+          placeholder="Rodzaj (Maryjne, części stałe itp)"
+          clearable
+          multiple
+          filterable
+          collapse-tags
+          :size="inputAndSelectSize"
+          :no-match-text="search.noMatchSelectText"
+          v-model="search.psalmType">
+          <el-option
+            v-for="item in search.psalmTypeOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
 
-      <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
-        <el-button type="info" class="clear-filters" round
-          @click="clearFilters">Wyczyść</el-button>
-      </el-col>
+        <el-select
+          class="filter stage"
+          placeholder="Etap"
+          clearable
+          multiple
+          filterable
+          collapse-tags
+          :size="inputAndSelectSize"
+          :no-match-text="search.noMatchSelectText"
+          v-model="search.neoStage">
+          <el-option
+            v-for="item in search.neoStageOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </div>
 
-    </el-row>
+      <div class="buttons">
+        <el-button
+          type="warning"
+          class="search"
+          round
+          @click="searchPsalms">
+          Szukaj
+        </el-button>
+
+        <el-button
+          type="info"
+          class="clear-filters"
+          round
+          @click="clearFilters">
+          Wyczyść
+        </el-button>
+      </div>
+    </div>
   </el-header>
 </template>
 
@@ -65,8 +129,12 @@ export default {
     return {
       search: {
         text: '',
-        cardColor: '',
+        cardColor: [],
+        psalmType: [],
+        liturgicalPeriod: [],
+        neoStage: [],
         sorting: '',
+        noMatchSelectText: 'Brak wyników :(',
         cardColorOptions: [{
           value: 'white',
           label: 'biały',
@@ -82,6 +150,69 @@ export default {
         }, {
           value: 'blue',
           label: 'niebieski',
+        }],
+        psalmTypeOptions: [{
+          value: 'peace_sign',
+          label: 'Śpiewy na znak pokoju',
+        }, {
+          value: 'fraction_of_bread',
+          label: 'Śpiewy na łamanie chleba',
+        }, {
+          value: 'adoration',
+          label: 'Śpiewy na krew Pańską + uwielbienie',
+        }, {
+          value: 'final_pslam',
+          label: 'Śpiewy na zakończenie eucharystii',
+        }, {
+          value: 'solid_pslams',
+          label: 'Śpiewy części stałych',
+        }, {
+          value: 'virgin_mary_psalm',
+          label: 'Śpiewy Maryjne',
+        }, {
+          value: 'penitential_liturgy',
+          label: 'Śpiewy na liturgię pokutną',
+        }],
+        liturgicalPeriodOptions: [{
+          value: 'advent',
+          label: 'Adwent',
+        }, {
+          value: 'lent',
+          label: 'Wielki Post',
+        }, {
+          value: 'easter',
+          label: 'Wielkanoc',
+        }, {
+          value: 'normal_period',
+          label: 'Okres zwykły',
+        }],
+        neoStageOptions: [{
+          value: 'first_scrutinium',
+          label: 'I Scrutinium',
+        }, {
+          value: 'shema',
+          label: 'Shema',
+        }, {
+          value: 'second_scrutinium',
+          label: 'II Scrutinium',
+        }, {
+          value: 'introduction_to_prayer',
+          label: 'Wprowadzenie w modlitwę',
+        }, {
+          value: 'traditio',
+          label: 'Traditio',
+        }, {
+          value: 'reditio',
+          label: 'Reditio',
+        }, {
+          value: 'our_father',
+          label: 'Ojcze nasz',
+        }, {
+          value: 'choosing',
+          label: 'Wybranie',
+        }, {
+          value: 'baptism',
+          label: 'Odnowienie przyrzeczeń chrzcielnych',
         }],
         sortingOptions: [{
           value: 'name',
@@ -99,10 +230,14 @@ export default {
       },
       showSearch: this.displaySearch(),
       isSticky: false,
+      inputAndSelectSize: 'large',
     };
   },
   computed: {
     ...mapGetters(['isMobile']),
+  },
+  created() {
+    this.setInputAndSelectSize();
   },
   mounted() {
     window.addEventListener('scroll', this.checkSticky);
@@ -112,7 +247,10 @@ export default {
     ...mapActions('psalmsModule', { getFilteredPsalms: 'getFilteredPsalms' }),
     clearFilters() {
       this.search.text = '';
-      this.search.cardColor = '';
+      this.search.cardColor = [];
+      this.search.psalmType = [];
+      this.search.liturgicalPeriod = [];
+      this.search.neoStage = [];
       this.search.sorting = '';
 
       this.searchPsalms();
@@ -122,6 +260,9 @@ export default {
         searchText: this.search.text,
         searchCardColor: this.search.cardColor,
         searchSorting: this.search.sorting,
+        searchPsalmType: this.search.psalmType,
+        searchLiturgicalPeriod: this.search.liturgicalPeriod,
+        searchNeoStage: this.search.neoStage,
       };
 
       this.getFilteredPsalms(filterValues);
@@ -138,61 +279,93 @@ export default {
         this.isSticky = false;
       }
     },
+    setInputAndSelectSize() {
+      if (this.isMobile) {
+        this.inputAndSelectSize = 'small';
+      } else {
+        this.inputAndSelectSize = 'large';
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
-  .el-header {
+  .search-wrapper {
+    height: auto !important;
+  }
+
+  .search-bar {
     height: auto !important;
     border-bottom: 1px solid #EBEEF5;
     margin-bottom: 2rem;
   }
 
-  .psalms-search {
-    padding: 1rem 0;
-  }
-
-  .clear-filters, .search {
-    margin: 1rem 0;
+  .filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: center;
   }
 
   .filter {
-    margin: 1rem 0;
+    padding-right: 1.5rem;
+    margin-bottom: 1rem;
   }
 
-  .filter.sorting {
-    width: 100%;
+  .filter.text {
+    max-width: 650px;
   }
 
-  .el-select-dropdown__item {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  .filter.type {
+    width: 350px;
   }
 
-  .el-select-dropdown__item.selected {
-    color: #e6a23d;
+  .filter.stage {
+    width: 450px;
   }
 
-  .psalms-search.mobile.sticky {
-    position: fixed;
-    width: 97%;
-    z-index: 999;
-    background: #fafafa;
-    top: 53px;
-    padding: 10px 20px 10px 20px;
-    border-bottom: 1px solid #EBEEF5;
-    left: -10px;
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin-bottom: 10px;
   }
 
-  @media (max-width: 768px) {
-    .filter {
+  .buttons .search {
+    padding: 12px 75px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 1600px) {
+    .filter.text {
+      max-width: 100%;
       width: 100%;
+    }
+
+    .filter, .filter.type, .filter.stage {
+      width: calc(50% - 1.5rem);
     }
   }
 
-  @media (max-width: 420px) {
-    .psalms-search.mobile.sticky {
-      width: 95%;
+  @media (max-width: 1300px) {
+    .filter.stage, .filter.type {
+      width: 100%;
+    }
+
+    .filter.sort {
+      margin: 0 auto 1rem auto;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .filter {
+      width: 100%;
+      padding-right: 0;
     }
   }
 </style>

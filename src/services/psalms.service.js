@@ -43,8 +43,20 @@ export default class PsalmsService {
     let url = `psalms/?search=${filterValues.searchText}`;
     const header = TokenService.getAuthenticationHeader();
 
-    if (filterValues.searchCardColor !== '') {
+    if (filterValues.searchCardColor.length !== 0) {
       url += `&card_color=${filterValues.searchCardColor}`;
+    }
+
+    if (filterValues.searchPsalmType.length !== 0) {
+      url += `&type=${filterValues.searchPsalmType}`;
+    }
+
+    if (filterValues.searchLiturgicalPeriod.length !== 0) {
+      url += `&liturgical_period=${filterValues.searchLiturgicalPeriod}`;
+    }
+
+    if (filterValues.searchNeoStage.length !== 0) {
+      url += `&neo_stage=${filterValues.searchNeoStage}`;
     }
 
     if (filterValues.searchSorting !== '') {
