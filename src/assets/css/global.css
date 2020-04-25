@@ -94,6 +94,18 @@ h1 {
     padding: 0;
 }
 
+.el-select-dropdown__item {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.el-select-dropdown__item.selected {
+  color: #e6a23d;
+}
+
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
+  color: #e6a23d;
+}
+
 @media (max-width: 1024px) {
   .logout button span {
     margin-left: 0 !important;
