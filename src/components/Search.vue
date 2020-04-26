@@ -31,7 +31,7 @@
         </el-select>
 
         <el-select
-          class="filter"
+          class="filter liturgical-period"
           placeholder="Okres liturgiczny"
           clearable
           multiple
@@ -177,6 +177,9 @@ export default {
           value: 'advent',
           label: 'Adwent',
         }, {
+          value: 'christmas',
+          label: 'Boże Narodzenie',
+        }, {
           value: 'lent',
           label: 'Wielki Post',
         }, {
@@ -319,6 +322,10 @@ export default {
     max-width: 650px;
   }
 
+  .filter.liturgical-period {
+    width: 250px;
+  }
+
   .filter.type {
     width: 350px;
   }
@@ -347,7 +354,7 @@ export default {
       width: 100%;
     }
 
-    .filter, .filter.type, .filter.stage {
+    .filter, .filter.type, .filter.stage, .filter.liturgical-period {
       width: calc(50% - 1.5rem);
     }
   }
@@ -363,7 +370,7 @@ export default {
   }
 
   @media (max-width: 991px) {
-    .filter {
+    .filter, .filter.liturgical-period {
       width: 100%;
       padding-right: 0;
     }
