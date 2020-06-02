@@ -46,9 +46,6 @@ export default class UserService {
     const url = `users/${userID}/`;
     const header = TokenService.getAuthenticationHeader();
 
-    console.log('userID: ', userID);
-    console.log('userData: ', userData);
-
     try {
       const response = await neoGuideAuthenticatedAPI.put(url, userData, header);
       return response.data;
@@ -59,6 +56,19 @@ export default class UserService {
         return null;
       }
 
+      return {};
+    }
+  }
+
+  static async changePassword(changePasswordRequest) {
+    const url = 'users/me/change-password/';
+    const header = TokenService.getAuthenticationHeader();
+
+    try {
+      const response = await neoGuideAuthenticatedAPI.post(url, changePasswordRequest, header);
+      return response.data;
+    } catch (e) {
+      console.error(`UserService.changePassword() - ${e}`);
       return {};
     }
   }
