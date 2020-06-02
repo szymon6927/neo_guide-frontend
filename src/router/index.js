@@ -10,6 +10,7 @@ import PsalmDetailsView from '../views/PsalmDetails.vue';
 import NotFoundView from '../views/NotFound.vue';
 import LoginView from '../views/auth/Login.vue';
 import ProfileView from '../views/Profile.vue';
+import ChangePasswordView from '../views/auth/ChangePassword.vue';
 
 import { TokenService } from '../services/token.service';
 
@@ -56,6 +57,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfileView,
+  },
+  {
+    path: '/change-password',
+    name: 'changePassword',
+    component: ChangePasswordView,
   },
   {
     path: '*',
