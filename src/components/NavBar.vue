@@ -53,6 +53,11 @@
             <i class="el-icon-user-solid"></i>
             <span>Profil</span>
           </el-menu-item>
+
+          <el-menu-item class="sub-menu-item" index="/change-password">
+            <i class="el-icon-edit"></i>
+            <span>Zmiana hasła</span>
+          </el-menu-item>
         </el-submenu>
 
       </el-menu>

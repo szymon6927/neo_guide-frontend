@@ -1,6 +1,6 @@
 import UserService from '../../services/user.service';
 import { TokenService } from '../../services/token.service';
-import { LOGIN_LITERALS } from '../../literals/auth';
+import { LOGIN_LITERALS, CHANGE_PASSWORD_LITERALS } from '../../literals/auth';
 import { PROFILE_LITERALS } from '../../literals/profile';
 import { isEmptyObject } from '../../utils';
 
@@ -79,6 +79,27 @@ export const userModule = {
 
       commit('SET_USER', result);
       dispatch('alertModule/success', PROFILE_LITERALS.UPDATE_SUCCESS, { root: true });
+    },
+
+    async changePassword({ dispatch }, { changePasswordRequest }) {
+      console.log('changePasswordRequest: ', changePasswordRequest);
+
+      const result = await UserService.changePassword(changePasswordRequest);
+
+      if (isEmptyObject(result)) {
+        dispatch(
+          'alertModule/error',
+          CHANGE_PASSWORD_LITERALS.ERROR,
+          { root: true },
+        );
+        return;
+      }
+
+      dispatch('alertModule/success', CHANGE_PASSWORD_LITERALS.SUCCESS, { root: true });
+
+      setTimeout(() => {
+        dispatch('userModule/logout', null, { root: true });
+      }, 2500);
     },
   },
 };
